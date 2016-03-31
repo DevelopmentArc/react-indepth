@@ -1,7 +1,7 @@
 # Summary
 
-* React Basics
-* Life Cycle
-* Item Renderers
-* Immutable.js
+* [WIP] React Basics
+* [WIP] Life Cycle
+* [WIP] Item Renderers
+* [WIP] Immutable.js
 

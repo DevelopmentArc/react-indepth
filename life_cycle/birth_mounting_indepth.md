@@ -6,7 +6,7 @@
  After configuring the current instance, it starts the creation process for children of the component. Once the children are mounted, we get initial access to the Native UI layer[^1] (DOM, UIView, etc.). With Native UI access, we can start to query and modify how our content is actually displayed. This is also when we can begin the process of integrating 3rd Party UI libraries and components.
  
 ## Components vs. Elements
- A common misconception developers often have when learning React, is that a mounted instance is the same a component class. For example, if I create a new React component and then `render()` it to the DOM:
+ When learning React, may developers have a common misconception. At first glance, one would assume that a mounted instance is the same as a component class. For example, if I create a new React component and then `render()` it to the DOM:
  
  ```javascript
  import React from 'react';
@@ -21,7 +21,9 @@
  ReactDOM.render(<MyComponent />, document.getElementById('mount-point')); 
  ```
  
- The initial assumption is that `render()` and JSX is creating an instance of the `MyComponent` class. What is actually occurring is JSX converts the ReactDOM line to use `React.createElement` and passes the Element instance to the `render()`:
+ The initial assumption is that during `render()` an instance of the `MyComponent` class is created, using something like `new MyComponent()`. This instance is then passed to render. Although this assumption sounds reasonable, the reality of the process is a little more involved.
+ 
+ What is actually occurring is the JSX processor converts the `ReactDOM.render()` line to use `React.createElement` to generate the instance. This generated Element is passesed to the `render()` method:
  
  ```javascript
  // generated code post-JSX processing
@@ -29,6 +31,18 @@
    React.createElement(MyComponent, null), document.getElementById('mount-point')
  );
  ```
+ 
+ A React Element is really a description[^2] of what will eventually be handed to the Native UI. This is a core, pardon the pun, *element* of virtual DOM technology in React.
+ 
+ 
+> The primary type in React is the ReactElement. It has four properties: type, props, key and ref. It has no methods and nothing on the prototype.
+>
+> -- https://facebook.github.io/react/docs/glossary.html#react-elements
+
+
+The Element is a lightweight object, so if we try to access it like it is the Class we will have some issues, such as availability of methods. 
+
+So, how does this tie into the life cycle? 
  
 ## The First `render()`
  
@@ -52,3 +66,5 @@
 ---
 
 [^1] The Native UI layer is actual system that handles UI rendering to screen. In a browser, this is the DOM. On device, this would be the UIView. React handles the translation of content to the native layer format, but offloads the actual visual rendering to the platform being used.
+
+[^2] Dan Abramov chimed in with this terminology on a StackOverflow question. http://stackoverflow.com/a/31069757

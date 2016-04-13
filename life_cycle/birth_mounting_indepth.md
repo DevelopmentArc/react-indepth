@@ -24,8 +24,10 @@
  The initial assumption is that `render()` and JSX is creating an instance of the `MyComponent` class. What is actually occurring is JSX converts the ReactDOM line to use `React.createElement` and passes the Element instance to the `render()`:
  
  ```javascript
- \\ generated code post-JSX processing
- ReactDOM.render(React.createElement(MyComponent, null), document.getElementById('mount-point'));
+ // generated code post-JSX processing
+ ReactDOM.render(
+   React.createElement(MyComponent, null), document.getElementById('mount-point')
+ );
  ```
  
 ## The First `render()`

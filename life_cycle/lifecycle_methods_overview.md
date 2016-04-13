@@ -5,7 +5,7 @@
   
   Each of the life cycle methods are called in a specific order and at a specific time. The methods are also tied to different parts of the Life Cycle. Here are the methods broken down in order and by their corresponding life cycle phase [^1]:
   
-## Birth / Creation
+## Birth / Mounting
 1. Initialize / Construction
 2. `getDefaultProps()` *(React.createClass)* or `MyComponent.defaultProps` *(ES6 class)*
 3. `getInitialState()` *(React.createClass)* or `this.state = ...` *(ES6 constructor)*
@@ -21,7 +21,7 @@
 4. Children Life cycle methods
 5. `componentWillUpdate()`
 
-## Death / Destruction
+## Death / UnMounting
 1. `componentWillUnmount()`
 4. Children Life cycle methods
 5. Instance destroyed for Garbage Collection

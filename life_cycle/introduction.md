@@ -10,9 +10,8 @@
  The first phase of the React component life cycle is the Birth/Mounting phase. This is where we start initialization of the component. The component's props and state are defined and configured. The component and all its children are mounted on to the DOM (or UI stack for Native). And finally we can do post-processing if required.
  
  ### Phase 2: Growth / Update
- The next phase of the life cycle is the Growth/Update phase. This is were we spend most of our time in the component's life. Here we get new props, change state, handle user interactions and communicate with the component heirarchy.
+ The next phase of the life cycle is the Growth/Update phase.  In this phase, we get new props, change state, handle user interactions and communicate with the component hierarchy. This is were we spend most of our time in the component's life.
  
  ### Phase 3: Death / Unmounting
- 
-
+ The final phase of the life cycle is the Death/Unmounting phase. This phase occurs when a component instance is unmounted from the DOM (Native UI). This can occur when the user navigates away, the UI page changes, a component is hidden (like a drawer), etc. When this 
 

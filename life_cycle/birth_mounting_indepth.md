@@ -3,9 +3,7 @@
  
  The most obvious focus of the birth phase is the initial configuration for our component instance. Here we pass in the props that will define instance. But during this phase there are a lot more moving pieces that we can tie into. 
  
- For example, this phase is where the instance configures the default state and gets ready for the display. We state the child component creation process. It is also were we get initial access to the DOM (UIView). With this access, we can begin the process of integrating 3rd Party UI libraries. Or, we can start to query and modify how our content is actually displayed on the native UI layer[^1].
- 
- The birth phase is a one time event, that 
+ For example, this phase is where the instance configures the default state and gets ready for the display. We state the child component creation process. It is also were we get initial access to the DOM (UIView). With this access, we can begin the process of integrating 3rd Party UI libraries. Or, we can start to query and modify how our content is actually displayed on the Native UI layer[^1].
  
 ## Components vs. Elements
  One of the early misconceptions that a lot of developers face when learning React is that once mounted, we are not working with the 
@@ -31,4 +29,4 @@
 
 ---
 
-[^1] The native UI layer is actual system that handles UI rendering. In a browser, this is the DOM. On device, this would be the UIView. React handles the translation of content to the native layer format, but offloads the actual rendering to the platform being used.
+[^1] The Native UI layer is actual system that handles UI rendering to screen. In a browser, this is the DOM. On device, this would be the UIView. React handles the translation of content to the native layer format, but offloads the actual visual rendering to the platform being used.

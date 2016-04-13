@@ -7,11 +7,11 @@
  Not all UI systems enable a life cycle pattern. This doesn't mean that a system is better or worse if a life cycle is or isn't implemented. All a life cycle does is provide a specific order of operation and a series of hooks to tie into said system. The React life cycle follows the common Birth, Growth, and Death flow. The React team has provided a series of methods you can implement/override to tap into the process.
  
  ### Phase 1: Birth / Mounting
- The first phase of the React component life cycle is the Birth/Mounting phase. This is where we start initialization of the component. The component's props and state are defined and configured. The component and all its children are mounted on to the DOM (or UI stack for Native). And finally we can do post-processing if required.
+ The first phase of the React component life cycle is the Birth/Mounting phase. This is where we start initialization of the component. The component's props and state are defined and configured. The component and all its children are mounted on to the DOM (or UI stack for Native). And finally we can do post-processing if required. The Birth/Mounting phase only occurs once.
  
  ### Phase 2: Growth / Update
- The next phase of the life cycle is the Growth/Update phase.  In this phase, we get new props, change state, handle user interactions and communicate with the component hierarchy. This is were we spend most of our time in the component's life.
+ The next phase of the life cycle is the Growth/Update phase.  In this phase, we get new props, change state, handle user interactions and communicate with the component hierarchy. This is were we spend most of our time in the component's life. Unlike Birth or Death, we repeat this phase over and over.
  
  ### Phase 3: Death / Unmounting
- The final phase of the life cycle is the Death/Unmounting phase. This phase occurs when a component instance is unmounted from the DOM (Native UI). This can occur when the user navigates away, the UI page changes, a component is hidden (like a drawer), etc. When this 
+ The final phase of the life cycle is the Death/Unmounting phase. This phase occurs when a component instance is unmounted from the DOM (Native UI). This can occur when the user navigates away, the UI page changes, a component is hidden (like a drawer), etc. Death occurs once and then component is then ready for garbage collection.
 

@@ -31,4 +31,4 @@
 
 ---
 
-[1] 
+[^1] The native UI layer is actual system that handles UI rendering. In a browser, this is the DOM. On device, this would be the UIView. React handles the translation of content to the native layer format, but offloads the actual rendering to the platform being used.

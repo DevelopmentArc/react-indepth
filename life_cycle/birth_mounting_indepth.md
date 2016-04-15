@@ -53,9 +53,9 @@ So, how does this tie into the life cycle? These descriptor Elements are essenti
  
 ## Initialization & Construction
 
-## Default Props
+### Default Props
 
-## Initial State
+### Initial State
 
 ## Pre-mounting with `componentWillMount()`
 

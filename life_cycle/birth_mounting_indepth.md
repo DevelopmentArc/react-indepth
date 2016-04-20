@@ -124,7 +124,7 @@ this.props = Object.assign(Constructor.defaultProps, elementInstance.props);
 In the React code snippet, React checks the underlying Class instance to see if it defines `getDefaultProps()` and uses this to set the values. When using ES6 classes we just define it on the class itself. Any property defined on the `passedProps` value is applied/overridden to the property in the default props object.
 
 #### `null` vs. `undefined` props
-When using default props, it is important to under how the React merge process works. Often, we are generating props dynamiclly based on application state (Flux, Redux, Mobx, etc.). This means that we can sometimes generate `null` values and pass this as the prop.
+When using default props, it is important to under how the React merge process works. Often, we are generating props dynamically based on application state (Flux, Redux, Mobx, etc.). This means that we can sometimes generate `null` values and pass this as the prop.
 
 When assigning default props, the React object merge code sees `null` as a defined value.
 
@@ -132,7 +132,7 @@ When assigning default props, the React object merge code sees `null` as a defin
 <Person name="Bob" age={ null } />
 ```
 
-Because `null` is a defined value our Component would render this as `<div>Bob (age:)</div>` instead of rendering 'unknown'. But, if we pass in `undefined` instead of `null`, React treats this as undefined (well yeah, obviously) and we would render 'unkown'.
+Because `null` is a defined value our Component would render this as `<div>Bob (age:)</div>` instead of rendering *unknown*. But, if we pass in `undefined` instead of `null`, React treats this as undefined (well yeah, obviously) and we would render *unknown* as expected.
 
 Keep this in mind when defining default props, because tracing down an `null` value can be tricky in larger application.
 
@@ -140,7 +140,7 @@ Keep this in mind when defining default props, because tracing down an `null` va
 
 ## Pre-mounting with `componentWillMount()`
 
-## Component `render()`
+## Component `render()` and Mounting
 
 ## Managing Children Components
 

@@ -109,7 +109,7 @@ var Person = React.createClass({
 
 The result of either process is the same. If we create a new instance without setting the age prop ex: `<Person name="Bill" />`, the component will render `<div>Bill (age: unknown)</div>`.
 
-React handles default props by merging the passed props object and the default props object. This process is simialar to `Object.assign()` or the lodash/underscore `_.assign()` process. The default props object is the target object and the passed props is the assigner:
+React handles default props by merging the passed props object and the default props object. This process is similar to [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or the Lodash/Underscore [`_.assign()`](https://lodash.com/docs#assign) method. The default props object is the target object and the passed props is the source:
 
 ```javascript
 // React library code to extract defaultProps to the Constructor
@@ -121,7 +121,20 @@ if (Constructor.getDefaultProps) {
 this.props = Object.assign(Constructor.defaultProps, elementInstance.props);
 ```
 
-This means that any property defined on the `passedProps` value is applied/overrides the property in the defaultProps object 
+In the React code snippet, React checks the underlying Class instance to see if it defines `getDefaultProps()` and uses this to set the values. When using ES6 classes we just define it on the class itself. Any property defined on the `passedProps` value is applied/overridden to the property in the default props object.
+
+#### `null` vs. `undefined` props
+When using default props, it is important to under how the React merge process works. Often, we are generating props dynamiclly based on application state (Flux, Redux, Mobx, etc.). This means that we can sometimes generate `null` values and pass this as the prop.
+
+When assigning default props, the React object merge code sees `null` as a defined value.
+
+```javascript
+<Person name="Bob" age={ null } />
+```
+
+Because `null` is a defined value our Component would render this as `<div>Bob (age:)</div>` instead of rendering 'unknown'. But, if we pass in `undefined` instead of `null`, React treats this as undefined (well yeah, obviously) and we would render 'unkown'.
+
+Keep this in mind when defining default props, because tracing down an `null` value can be tricky in larger application.
 
 ### Initial State
 

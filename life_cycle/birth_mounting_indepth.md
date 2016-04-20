@@ -112,9 +112,16 @@ The result of either process is the same. If we create a new instance without se
 React handles default props by merging the passed props object and the default props object. This process is simialar to `Object.assign()` or the lodash/underscore `_.assign()` process. The default props object is the target object and the passed props is the assigner:
 
 ```javascript
-// psuedo code
-let this.props = Object.assign(this.defaultProps, passedProps);
+// React library code to extract defaultProps to the Constructor
+if (Constructor.getDefaultProps) {
+   Constructor.defaultProps = Constructor.getDefaultProps();
+}
+
+// psuedo code (as an example)
+this.props = Object.assign(Constructor.defaultProps, elementInstance.props);
 ```
+
+This means that any property defined on the `passedProps` value is applied/overrides the property in the defaultProps object 
 
 ### Initial State
 

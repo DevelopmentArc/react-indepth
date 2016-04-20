@@ -52,9 +52,69 @@ So, how does this tie into the life cycle? These descriptor Elements are essenti
  This is the point where we entire the component life cycle. React uses the `instance` property on the Element and begins construction.
  
 ## Initialization & Construction
- Du
+ During initialization of the component instance from the Element, the props and state are defined. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
 
 ### Default Props
+As we mentioned earlier, the Element instance contains the current props that are being passed to component instance. Most of the time, all the available props on the component are not required. Yet, we do need to have values for the props for our Component to render correctly.
+
+For example, we have a simple component that renders a name and age.
+
+```javascript
+import React from 'react';
+
+export default class Person extends React.Component {
+  render() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+}
+```
+
+
+In our case, we expect two props to by passed in: `name` and `age`. If we want to make `age` optional and default to the text 'unknown' we can take advantage of React's default props. 
+
+**For ES6 Class**
+```javascript
+import React from 'react';
+
+class Person extends React.Component {
+  render() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+}
+
+Person.defaultProps = { age: 'unknown' };
+
+export default Person;
+```
+
+**For createClass (ES6/ES5/CoffeeScript, etc.)**
+
+```javascript
+var Person = React.createClass({
+  getDefaultProps: function() {
+    return ({ age: 'unknown' });
+  },
+  
+  render: function() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+});
+```
+
+The result of either process is the same. If we create a new instance without setting the age prop ex: `<Person name="Bill" />`, the component will render `<div>Bill (age: unknown)</div>`.
+
+React handles default props by merging the passed props object and the default props object. This process is simialar to `Object.assign()` or the lodash/underscore `_.assign()` process. The default props object is the target object and the passed props is the assigner:
+
+```javascript
+// psuedo code
+let this.props = Object.assign(this.defaultProps, passedProps);
+```
 
 ### Initial State
 

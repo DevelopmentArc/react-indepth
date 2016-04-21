@@ -151,4 +151,4 @@ var Person = React.createClass({
 
 The log statement fails because `this.state` is undefined. When we try to access `foo` we will get a *TypeError: Cannot read property 'foo' of null*. To solve this we can either set the default state to `{}` or, to have a clearer intention, set it to `{ foo: null }`.
 
-***Next Up:*** [Pre-mounting with `componentWillUpdate()`](premounting_with_componentwillmount.md)
+***Next Up:*** [Pre-mounting with `componentWillMount()`](premounting_with_componentwillmount.md)

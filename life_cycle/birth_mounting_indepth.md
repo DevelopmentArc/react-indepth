@@ -202,10 +202,17 @@ var Person = React.createClass({
 }
  ```
 
-The log statement fails because `this.state` is undefined, so trying to access `foo` throws an error. To solve this you can either set the default state to `{}` or to have a clearer intention set it to `{ foo: null }`.
+The log statement fails because `this.state` is undefined. When we try to access `foo` we will get a *TypeError: Cannot read property 'foo' of null*. To solve this we can either set the default state to `{}` or, to have a clearer intention, set it to `{ foo: null }`.
 
 
 ## Pre-mounting with `componentWillMount()`
+Now that the props and state are set, we finally enter the realm of Life Cycle methods. The first true Life Cycle called is `componentWillMount()`. This method is only called once and is called before our initial render. Since this is called before `render()` our Component will not have access to the Native UI (DOM, etc.). We also will not have access to the children `refs`, because they are not created yet.
+
+The `componentWillMount()` is a chance for use to handle configuration, update our state, and in general prepare for the first render. Because we have configured props and initial state, we can safely query them, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values.
+
+We can safely call `this.setState` and update our current state before render. If we base state values on calculations passed in `props`, this is where we should do the logic.
+
+We can register to global events, such as a Flux store. Or, register to global Native UI events, such as `window` re-size or other such events.
 
 ## Component `render()`
 

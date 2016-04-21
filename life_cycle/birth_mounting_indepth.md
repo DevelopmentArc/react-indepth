@@ -137,6 +137,51 @@ Because `null` is a defined value our Component would render this as `<div>Bob (
 Keep this in mind when defining default props, because tracing down an `null` value can be tricky in larger application.
 
 ### Initial State
+ Once the final props are defined (passed w/ defaults), the Component instance configures the initial state. This process occurs in the construction of the instance itself. Unlike props, the Component state is an internal object that is not defined by outside values.
+ 
+ To define the initial state depends on how you declare your Component:
+ 
+ **For ES6 Class**
+```javascript
+import React from 'react';
+
+class Person extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+}
+
+Person.defaultProps = { age: 'unknown' };
+
+export default Person;
+```
+
+**For createClass (ES6/ES5/CoffeeScript, etc.)**
+
+```javascript
+var Person = React.createClass({
+  getDefaultProps: function() {
+    return ({ age: 'unknown' });
+  },
+  
+  getInitialState: function() {
+    return ({ count: 0 });
+  },
+  
+  render: function() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+});
+```
 
 ## Pre-mounting with `componentWillMount()`
 

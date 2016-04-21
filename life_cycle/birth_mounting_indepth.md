@@ -51,9 +51,6 @@ So, how does this tie into the life cycle? These descriptor Elements are essenti
 
  This is the point where we entire the component life cycle. React uses the `instance` property on the Element and begins construction.
 
-
-## Post-mount with `componentDidMount()`
-
  
  ***Next Up:*** [Initialization & Construction](birth/initialization_and_construction.md)
 

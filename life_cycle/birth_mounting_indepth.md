@@ -298,12 +298,12 @@ In the above example, it may seem safe since you are just querying the node. But
 
 This is one of those cases where the React error doesn't clearly point to the cause of the problem. In our case we didn't modify the DOM, so it feels like an unclear and potentially misleading error. This kind of error can cause React developers a lot of pain early on. Because we instinctually look for a place where we are changing the Native UI.
 
-The reason we get this error is because during the first render pass, the Native UI doesn't exist yet. We are essentially asking React to find a DOM node that doesn't exist. Generally, when `ReactDOM` can't find the node, this is because something or someone mutated the DOM. So, React falls back to the most common cause.
+The reason we get this error is because during the first render pass, the Native UI doesn't exist yet. We are essentially asking React to find a DOM node that doesn't exist. Generally, when `ReactDOM` can't find the node, this is because something or someone mutated the DOM. So, React falls back to the most common cause. 
 
-
-
+As you can see, having an understanding of the Life Cycle can help troubleshoot and prevent these often un-intuitive issues.
 
 ## Managing Children Components and Mounting
+Now that we have completed the first render pass, our `render()` method returns a React Element. This Element may have many children elements. Those children, may also have children. etc. etc.
 
 ## Post-mount with `componentDidMount()`
 

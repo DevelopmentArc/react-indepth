@@ -26,7 +26,7 @@
 
 The order of these methods are strict and called as defined above. Most of the time is spent in the Growth/Update phase and those methods are called many times. The Birth and Death methods will only be called once.
 
-Next Up: [Birth/Mounting in-depth](birth_mounting_indepth.md)
+**Next Up**: [Birth/Mounting in-depth](birth_mounting_indepth.md)
 
 ---
 

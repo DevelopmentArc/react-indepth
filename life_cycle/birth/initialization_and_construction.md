@@ -1,5 +1,5 @@
 # Initialization & Construction
- During the initialization of the component instance from the Element, the props and state will be created. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
+ During the initialization of the Component from the Element, the props and state are defined. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
 
 ## Default Props
 As we mentioned earlier, the Element instance contains the current props that are being passed to component instance. Most of the time, all the available props on the component are not required. Yet, we do need to have values for the props for our Component to render correctly.

@@ -43,6 +43,8 @@ In the example above, you can see that we can call `this.setState()` and update 
 
 Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If you Component needs to respond to global Native UI events, such as `window` re-sizing or focus changes, this is a good place to do it[^1].
 
+***Next Up:*** [Component `render()`](component_render.md)
+
 ---
 
 [^1] It's important to rembember that the Native UI elements (such as DOM) do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

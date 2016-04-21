@@ -8,6 +8,7 @@
      * [Initialization & Construction](life_cycle/birth/initialization_and_construction.md)
      * [Pre-Mounting with `componentWillMount()`](life_cycle/birth/premounting_with_componentwillmount.md)
      * [Component `render()`](life_cycle/birth/component_render.md)
+     * [Managing Component Children and Mounting](life_cycle/birth/managing_children_components_and_mounting.md)
    * [Growth/Update In-depth](life_cycle/growth_update_indepth.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
 * [WIP] Item Renderers

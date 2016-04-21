@@ -275,7 +275,8 @@ React would log out the following statement:
 
 > Warning: setState(...): Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
 
-React will also warn you if you try to access the DOM elements in the render pass.
+#### Native UI access in render is often fatal
+React will also warn you if you try to access the Native UI elements in the render pass.
 
 ```javascript
 render() {
@@ -291,7 +292,14 @@ render() {
 
 > VM943:45 Warning: Person is accessing getDOMNode or findDOMNode inside its render(). render() should be a pure function of props and state. It should never access something that requires stale data from the previous render, such as refs. Move this logic to componentDidMount and componentDidUpdate instead.
 
-In the above example, it may seem safe since you are just querying the node, but as the warning states we are querying old data.
+In the above example, it may seem safe since you are just querying the node. But, as the warning states, we might be querying potentially old data. But in our case, during the Birth phase, this would be a fatal error.
+
+> Uncaught Invariant Violation: findComponentRoot(..., .0): Unable to find element. This probably means the DOM was unexpectedly mutated (e.g., by the browser), usually due to forgetting a <tbody> when using tables, nesting tags like <form>, <p>, or <a>, or using non-SVG elements in an <svg> parent. Try inspecting the child nodes of the element with React ID ``.
+
+This is one of those cases where the React error doesn't clearly point to the cause of the problem. In our case we didn't modify the DOM, so it feels like an unclear and potentially misleading error. This kind of error can cause React developers a lot of pain early on. Because we instinctually look for a place where we are changing the Native UI.
+
+The reason we get this error is because during the first render pass, the Native UI doesn't exist yet. We are essentially asking React to find a DOM node that doesn't exist. Generally, when `ReactDOM` can't find the node, this is because something or someone mutated the DOM. So, React falls back to the most common cause.
+
 
 
 

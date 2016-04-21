@@ -82,3 +82,71 @@ When assigning default props, the React object merge code sees `null` as a defin
 Because `null` is a defined value our Component would render this as `<div>Bob (age:)</div>` instead of rendering *unknown*. But, if we pass in `undefined` instead of `null`, React treats this as undefined (well yeah, obviously) and we would render *unknown* as expected.
 
 Keep this in mind when defining default props, because tracing down an `null` value can be tricky in larger application.
+
+## Initial State
+ Once the final props are defined (passed w/ defaults), the Component instance configures the initial state. This process occurs in the construction of the instance itself. Unlike props, the Component state is an internal object that is not defined by outside values.
+ 
+ To define the initial state depends on how you declare your Component. For ES6 we declare the state in the constructor. Just like `defaultProps`, the initial state takes an object.
+ 
+ **For ES6 Class**
+```javascript
+import React from 'react';
+
+class Person extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  render() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+}
+
+Person.defaultProps = { age: 'unknown' };
+
+export default Person;
+```
+
+For `React.createClass` Components, there is a helper method called `getInitialState()` which returns the state object. This method is called during setup to set the state on the instance.
+
+**For createClass (ES6/ES5/CoffeeScript, etc.)**
+
+```javascript
+var Person = React.createClass({
+  getDefaultProps: function() {
+    return ({ age: 'unknown' });
+  },
+  
+  getInitialState: function() {
+    return ({ count: 0 });
+  },
+  
+  render: function() {
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+});
+```
+
+### State defaults
+ It is important to keep in mind that if we do not define a state in the constructor/getInitialState then the state will be `undefined`. Because the state is `undefined` and not an empty object (`{}`) if you try to query the state later on this will be an issue.
+ 
+ In general, we want to set a default value for all our state properties. There are some edge cases where the initial value for the state property maybe `null` or `undefined`. If this state happens to be only state property, it maybe tempting to skip setting a default state. But, if our code tries to access the property you will get an error.
+ 
+ ```javascript
+ class Person extends React.Component {
+  render() {
+    // This statement will throw an error
+    console.log(this.state.foo);
+    return (
+      <div>{ this.props.name } (age: { this.props.age })</div>
+    );
+  }
+}
+ ```
+
+The log statement fails because `this.state` is undefined. When we try to access `foo` we will get a *TypeError: Cannot read property 'foo' of null*. To solve this we can either set the default state to `{}` or, to have a clearer intention, set it to `{ foo: null }`.

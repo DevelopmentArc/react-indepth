@@ -45,3 +45,4 @@ Other uses for `componentWillMount()` includes registering to global events, suc
 
 ---
 
+[^1] It's important to rembember that the Native UI elements (such as DOM) do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

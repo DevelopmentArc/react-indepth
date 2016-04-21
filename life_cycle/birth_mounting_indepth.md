@@ -308,7 +308,7 @@ The reason we get this error is because during the first render pass, the Native
 ## Post-mount with `componentDidMount()`
 
  
- 
+ ***Next Up:*** [Growth/Update In-depth](growth_update_indepth.md)
 
 ---
 

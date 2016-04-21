@@ -62,7 +62,7 @@ With the potential for an *n* depth tree of Elements, each of the instances need
 ## Post-mount with `componentDidMount()`
 
  
- ***Next Up:*** [Growth/Update In-depth](growth_update_indepth.md)
+ ***Next Up:*** [Initialization & Construction](birth/initialization_and_construction.md)
 
 ---
 

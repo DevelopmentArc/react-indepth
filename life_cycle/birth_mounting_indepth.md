@@ -56,7 +56,7 @@ Now that we have completed the first render pass, our `render()` method returns 
 
 ![React Element Tree](react-element-tree.png)
 
-With the potential for an *n* depth tree of Elements, each of the instances need to go through their own entire life cycle process. Each child Element defined in the return `render()` will be constructed, 
+With the potential for an *n* depth tree of Elements, each of the instances need to go through their own entire life cycle process.
 
 
 ## Post-mount with `componentDidMount()`

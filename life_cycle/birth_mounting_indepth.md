@@ -251,6 +251,13 @@ In the example above, you can see that we can call `this.setState()` and update 
 Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If you Component needs to respond to global Native UI events, such as `window` re-sizing or focus changes, this is a good place to do it[^3].
 
 ## Component `render()`
+Now that we have pre-configured our component, we enter the first rendering of our content. As React developers, the `render()` method is the most familiar. We create Elements (generally via JSX) and return them. We access the Component `this.props` and `this.state` and let these values derive how content should be generated. When we access `this.state`, any changes we made during `componentWillMount()` are fully applied. 
+
+Unlike any other method in the Life Cycle, `render()` is the one method that exists across multiple life cycle phases. It occurs here in Birth and it is where we spend a lot of time in Growth. In both cases, we have a core principal we should follow in `render()` when it comes to the life cycle.
+
+The principal is that we should never trigger another life cycle pass while in `render()`. What does that mean? That means we shouldn't call `setState()` nor query the Native UI. The reason why is if we do this kind of interaction in render, then it will kickoff another render pass. Which once again, triggers render which then does the same thing... infinitely.
+
+The React development tools are great at catching these kinds of errors and will generally yell at you if you do.
 
 ## Managing Children Components and Mounting
 

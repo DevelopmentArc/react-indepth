@@ -34,11 +34,11 @@ When new props are passed in via root or the parent, this triggers the Update ph
  Keeping that in mind, it is still important to understand how state works in React. We will continue to discuss state in-depth and how the mechanics work. We will try to share best practices that we have found, but in general what is good today will probably be bad tomorrow.
  
  ### The asynchronicity of state
- Before we move on to the final way to start an update, we should talk a little about how state is managed in the underpinnings of React. When developers first start using `setState()` there is an assumption that when you query `this.state` the values applied on the set call will be available. This is not true. The `setState()` method should be treated as an asynchronous process [^2].
+ Before we move on to the final way to start an update, we should talk a little about how state is managed in the internals of React. When developers first start using `setState()` there is often an assumption that when you call `this.state` the values applied on the set will be available. This is not true. The `setState()` method should be treated as an asynchronous process [^2]. So how does `setState()` work?
  
  When we call `setState()` this is considered a partial state change. We are not flushing/replacing the entire state, just updating part(s) of it. React uses a queuing system (React internal method `enqueueSetState()` to be exact) to apply the partial state change. Because we may set the state multiple times in a method chain, a change queue is built up. Once the state change is added to the queue, React makes sure the Component is added to the dirty queue. This dirty queue tracks the Component instances that have changed. Essentially, this is what tells React which Components need to enter the Update phase later.
  
- When working with state, it is very important to keep this in mind. A common error is to set state in one method and then later in the same synchronous method chain try to access the state value.
+ When working with state, it is very important to keep this in mind. A common error is to set state in one method and then later in the same synchronous method chain try to access the state value. This can sometimes cause tricky bugs, especially if you expose state values via public methods on your Component, such as `value()`.
  
 ## Starting Update: `forceUpdate`
  There is one more way to kick off an Update phase. There is a special method on a component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this later on.

@@ -41,7 +41,7 @@ When new props are passed in via root or the parent, this triggers the Update ph
  When working with state, it is very important to keep this in mind. A common error is to set state in one method and then later in the same synchronous method chain try to access the state value. This can sometimes cause tricky bugs, especially if you expose state values via public methods on your Component, such as `value()`.
  
 ## Starting Update: `forceUpdate`
- There is one more way to kick off an Update phase. There is a special method on a component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this later on.
+ There is one more way to kick off an Update phase. There is a special method on a component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this in-depth later on.
 
  
  Up Next: [Updating and `componentWillReceiveProps()`](update/component_will_receive_props.md)

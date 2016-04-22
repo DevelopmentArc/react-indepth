@@ -171,5 +171,5 @@ export default class Chart extends React.Component {
 
 ---
  
- [^1] Multiple rendering passes opens the door for serious performance issues. Proceed with exterme caution.
+ [^1] Multiple render passes opens the door for serious performance issues. Proceed with extreme caution!
 

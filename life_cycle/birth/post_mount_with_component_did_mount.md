@@ -1,8 +1,8 @@
 # Post-mount with `componentDidMount()`
- The last step in the Birth/Mount process life cycle phase is our post-mount access via `componentDidMount()`. This method is called once all our children Elements and our Component instance is mounted onto the Native UI. When this method is called we now have access to the Native UI (DOM), access to our children `refs` and the ability to *potentially* trigger a new render pass.
+ The last step in the Birth/Mount process life cycle phase is our post-mount access via `componentDidMount()`. This method is called once all our children Elements and our Component instance are mounted onto the Native UI. When this method is called we now have access to the Native UI (DOM), access to our children `refs` and the ability to *potentially* trigger a new render pass.
  
 ## Understanding call order
- Similar to `componentWillMount()`, `componentDidMount()` is only called one time. Unlike our other life cycle methods, where we start at the top and work down, `componentDidMount()` works from the bottom up. Let's consider the following Component/Element Tree:
+ Similar to `componentWillMount()`, `componentDidMount()` is only called one time. Unlike our other Birth/Mount methods, where we start at the top and work down, `componentDidMount()` works from the bottom up. Let's consider the following Component/Element Tree:
  
  ![React Element Tree](react-element-tree.png)
 
@@ -18,7 +18,7 @@
  A.2 -> A.1 -> A.0.1 -> A.0.0 -> A.0 -> A
  ```
  
- By walking backwards, we know that every child has mounted and also run it's own `componentDidMount()`. This guarantees the parent can access the Native UI elements for itself and it's children.
+ By walking backwards, we know that every child has mounted and also run its own `componentDidMount()`. This guarantees the parent can access the Native UI elements for itself and its children.
   
  Let's consider the following three components and their call order.
 
@@ -120,14 +120,14 @@ Parent did mount.
 Child value: foo
 ```
 
-As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access it's `refs` and the GrandChild can access it's own nodes. 
+As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access it's `refs` and the GrandChild can access it's own DOM nodes. 
 
 ## Useful Tasks
- The `componentDidMount()` method can be a helpful heavy lifter for our components. One of the most common tasks is interacting with the Native UI. Unlike `componentWillMount()` or `render()` we can now fully interact with the Native stack.
+ The `componentDidMount()` method can be a helpful heavy lifter for our Components. One of the most common tasks is interacting with the Native UI. Unlike `componentWillMount()` or `render()` we can now fully interact with the Native stack.
  
  For example, we may need to make changes to our current state based on how the Native UI laid out our content. We may need to figure out the current width/height of our children or our own instance. This is especially helpful in the browser where CSS layout drives a lot of our DOM calculations.
  
- Another useful task is setting up 3rd party UIs. For example, if we wanted to use a library like [C3.js](http://c3js.org/) or the excellent [Date Range Picker](http://www.daterangepicker.com/), this is where we would initialize our UI libraries.
+ Another useful task is setting up 3rd party UIs. For example, if we wanted to use a library like [C3.js](http://c3js.org/) or the [Date Range Picker](http://www.daterangepicker.com/), this is where we would initialize our UI libraries.
  
  **Chart.js**
  
@@ -160,12 +160,12 @@ export default class Chart extends React.Component {
 
  In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then passing in data.
 
- When integrating 3rd party libraries, we often need to bind to events, such as the user interacting with the Chart. This is where we would set up our listeners post library creation. We can also add more global listeners here, if we did not want to setup the listeners in the `componentWillMount()` call.
+ When integrating 3rd party libraries, we often need to bind to events, such as the user interacting with the Chart. This is where we would set up our listeners post-library initialization. We can also add more global listeners here, if we did not want to setup the listeners in the `componentWillMount()` call.
 
 ## Starting another render pass [^1]
- There are some unique situations were we may have a second render pass post-Birth/Mount. This is not a common situation and generally is required when we have to change our current state based on the Native UI Layout. This could be calculating dynamic row height or column widths in a data table. It could be having to re-position the component's children based on how they are sized the first time.
+ There are some unique situations were we may have a second render pass post-Birth/Mount. This is not a common situation and generally occurs when we have to change our current state based on the Native UI Layout. This could be calculating dynamic row height or column widths in a data table. It could be having to re-position the component's children based on how they are sized the first time.
  
- If you require this kind of functionality, you have the ability to call `this.setState()` or `forceUpdate()` in your `componentDidMount()`. If you change state or force an update (more on this feature later), your component will begin another render pass and enter the [Growth/Update Phase](../growth_update_indepth.md). Because `componentDidMount()` is a called only once, we don't have to worry about this method causing an infinite loop. But, this can lead to issues down the road if you do not take the time to walk through all the potential ramifications of multiple renders.
+ If you require this kind of functionality, you have the ability to call `this.setState()` or `forceUpdate()` in your `componentDidMount()`. If you change state or force an update (more on this feature later), your component will begin another render pass and enter the [Growth/Update Phase](../growth_update_indepth.md). Because `componentDidMount()` is a called only once, we don't have to worry about this method causing an infinite loop. But, this process can lead to issues down the road if you do not take the time to walk through all the potential ramifications of multiple renders.
  
 ***Up Next:*** [Growth/Update Phase In-Depth](../growth_update_indepth.md)
 

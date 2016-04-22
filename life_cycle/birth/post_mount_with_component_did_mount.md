@@ -158,7 +158,16 @@ export default class Chart extends React.Component {
 }
 ```
 
-In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then passing in data.
+ In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then passing in data.
 
-## Starting another render pass
+ When integrating 3rd party libraries, we often need to bind to events, such as the user interacting with the Chart. This is where we would set up our listeners post library creation. We can also add more global listeners here, if we did not want to setup the listeners in the `componentWillMount()` call.
+
+## Starting another render pass [^1]
+ There are some unique situations were we may have a second render pass post-Birth/Mount. This is not a common situation and generally is required when we have to change our current state based on the Native UI Layout. This could be calculating dynamic row height or column widths in a data table. It could be having to re-position the component's children based on how they are sized the first time.
+ 
+ If you require this kind of functionality, you have the ability to call `this.setState()` and `forceUpdate()` in your `componentDidMount()`. If you change state or force an update (more on this feature later), your component will begin another render pass and enter the [Growth/Update Phase](../growth_update_indepth.md).
+ 
+ ---
+ 
+ [^1] Multiple rendering passes opens the door for serious performance issues. Proceed with exterme caution.
 

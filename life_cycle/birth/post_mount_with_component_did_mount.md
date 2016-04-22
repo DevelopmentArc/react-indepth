@@ -127,7 +127,7 @@ As you can see, the GrandChild's `componentDidMount()` was called first, followe
  
  For example, we may need to make changes to our current state based on how the Native UI laid out our content. We may need to figure out the current width/height of our children or our own instance. This is especially helpful in the browser where CSS layout drives a lot of our DOM calculations.
  
- Another useful task is setting up 3rd party UIs. For example, if we wanted to use a library like [C3.js](http://c3js.org/) or the excellent [Date Range Picker](http://www.daterangepicker.com/), this is where we would initalize our UI libraries.
+ Another useful task is setting up 3rd party UIs. For example, if we wanted to use a library like [C3.js](http://c3js.org/) or the excellent [Date Range Picker](http://www.daterangepicker.com/), this is where we would initialize our UI libraries.
  
  **Chart.js**
  
@@ -136,7 +136,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import c3 from 'c3';
 
-export default class Parent extends React.Component {
+export default class Chart extends React.Component {
 
   componentDidMount() {
     this.chart = c3.generate({
@@ -157,6 +157,8 @@ export default class Parent extends React.Component {
   }
 }
 ```
+
+In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then passing in data.
 
 ## Starting another render pass
 

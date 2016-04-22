@@ -110,4 +110,19 @@ export default class Parent extends React.Component {
   }
 }
 ```
-  
+
+When we mount `<Parent />` in our application we get the following in the browser console:
+
+```console
+GrandChild did mount.
+Child did mount.
+Parent did mount.
+Child value: foo
+```
+
+As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access it's `refs` and the GrandChild can access it's own nodes. 
+
+## Useful Tasks
+
+## Starting another render pass
+

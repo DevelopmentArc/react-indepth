@@ -167,8 +167,9 @@ export default class Chart extends React.Component {
  
  If you require this kind of functionality, you have the ability to call `this.setState()` or `forceUpdate()` in your `componentDidMount()`. If you change state or force an update (more on this feature later), your component will begin another render pass and enter the [Growth/Update Phase](../growth_update_indepth.md). Because `componentDidMount()` is a called only once, we don't have to worry about this method causing an infinite loop. But, this can lead to issues down the road if you do not take the time to walk through all the potential ramifications of multiple renders.
  
- ***Up Next:*** [Growth/Update Phase In-Depth](../growth_update_indepth.md)
- ---
+***Up Next:*** [Growth/Update Phase In-Depth](../growth_update_indepth.md)
+
+---
  
  [^1] Multiple rendering passes opens the door for serious performance issues. Proceed with exterme caution.
 

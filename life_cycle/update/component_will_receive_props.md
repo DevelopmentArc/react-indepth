@@ -1,1 +1,2 @@
-# Updating props and componentWillReceiveProps()
+# Updating and `componentWillReceiveProps()`
+

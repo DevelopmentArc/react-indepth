@@ -44,7 +44,7 @@ When new props are passed in via root or the parent, this triggers the Update ph
  There is one more way to kick off an Update phase. There is a special method on a component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this later on.
 
  
- Up Next: 
+ Up Next: [Updating props and `componentWillReceiveProps()`](update/component_will_receive_props.md)
  
  ---
  

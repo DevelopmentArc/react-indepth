@@ -13,7 +13,7 @@
 7. `componentDidMount()`
   
 ## Growth / Update
-1. `componentWillRecieveProps()`
+1. `componentWillReceiveProps()`
 2. `shouldComponentUpdate()`
 3. `render()`
 4. Children Life cycle methods

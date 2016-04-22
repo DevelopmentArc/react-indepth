@@ -123,6 +123,40 @@ Child value: foo
 As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access it's `refs` and the GrandChild can access it's own nodes. 
 
 ## Useful Tasks
+ The `componentDidMount()` method can be a helpful heavy lifter for our components. One of the most common tasks is interacting with the Native UI. Unlike `componentWillMount()` or `render()` we can now fully interact with the Native stack.
+ 
+ For example, we may need to make changes to our current state based on how the Native UI laid out our content. We may need to figure out the current width/height of our children or our own instance. This is especially helpful in the browser where CSS layout drives a lot of our DOM calculations.
+ 
+ Another useful task is setting up 3rd party UIs. For example, if we wanted to use a library like [C3.js](http://c3js.org/) or the excellent [Date Range Picker](http://www.daterangepicker.com/), this is where we would initalize our UI libraries.
+ 
+ **Chart.js**
+ 
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import c3 from 'c3';
+
+export default class Parent extends React.Component {
+
+  componentDidMount() {
+    this.chart = c3.generate({
+      bindto: ReactDOM.findDOMNode(this.refs.chart),
+      data: {
+        columns: [
+          ['data1', 30, 200, 100, 400, 150, 250],
+          ['data2', 50, 20, 10, 40, 15, 25]
+        ]
+      }
+    });
+  }
+
+  render() {
+    return (
+      <div ref="chart"></div>
+    );
+  }
+}
+```
 
 ## Starting another render pass
 

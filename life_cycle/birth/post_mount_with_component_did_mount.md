@@ -21,7 +21,8 @@
  By walking backwards, we know that every child has mounted and also run it's own `componentDidMount()`. This guarantees the parent can access the Native UI elements for itself and it's children.
   
  Let's consider the following three components and their call order.
-  
+
+**GrandChild.js**
 ```javascript
 /** 
  * GrandChild
@@ -49,6 +50,38 @@ export default class GrandChild extends React.Component {
     );
   }
 }
-  ```
-  
+```
+
+**Child.js**
+```javascript
+/*
+ * Child
+ * It logs the componentDidMount() and has a public method called value,
+ * which returns the GrandChild value.
+ */
+import React from 'react';
+import GrandChild from './GrandChild';
+
+export default class Child extends React.Component {
+
+  componentDidMount() {
+    console.log('Child did mount.');
+  }
+
+  value() {
+    return this.refs.grandChild.value();
+  }
+
+  render() {
+    return (
+      <div>
+        Child
+        <GrandChild ref="grandChild" />
+      </div>
+    );
+  }
+}
+```
+
+**Parent.js**
   

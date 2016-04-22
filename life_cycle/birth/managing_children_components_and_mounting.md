@@ -5,4 +5,10 @@ Now that we have completed the first render pass, our `render()` method returns 
 
 With the potential for an *n* depth tree of Elements, each of the Elements need to go through their own entire life cycle process. Just like the parent Element, React creates a new instance for each child. They go through construction, default props, initial state, `componentWillMount()` and `render()`. If the child has children, the process starts again... all the way down.
 
+One of the most powerful concepts in React is the ability to easily compose complex layout through nesting of children. It is encouraged to keep your Components as *'dumb'* as possible. The idea is only container[^1] components managing higher level functionality.
+
 ***Up Next:*** [Post-Mount with `componentDidMount()`](post_mount_with_component_did_mount.md)
+
+---
+
+[^1] See [Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.pnmirdrso) by Dan Abramov for more details

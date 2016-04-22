@@ -23,7 +23,7 @@
  Let's consider the following three components and their call order.
   
 ```javascript
-/* 
+/** 
  * GrandChild
  * It logs the componentDidMount() and has a public method called value.
  */ 

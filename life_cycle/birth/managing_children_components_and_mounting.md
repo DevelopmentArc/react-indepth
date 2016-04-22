@@ -7,6 +7,8 @@ With the potential for an *n* depth tree of Elements, each of the Elements need 
 
 One of the most powerful concepts in React is the ability to easily compose complex layout through nesting of children. It is encouraged to keep your Components as *'dumb'* as possible. The idea is only container[^1] components managing higher level functionality.
 
+Because this is the preferred way of development, this means we will have a lot of smaller components that also have their own life cycle. Keep this in mind as we continue through the life cycle, because every component will follow the same pattern.
+
 ***Up Next:*** [Post-Mount with `componentDidMount()`](post_mount_with_component_did_mount.md)
 
 ---

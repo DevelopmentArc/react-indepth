@@ -26,7 +26,7 @@
 
 When new props are passed in via root or the parent, this triggers the Update phase.
 
-## Starting Update: Changing State
+## Starting Update: `setState()`
  Similar to changing `props`, when a Component changes its state value via `this.setState()`, this also triggers a new Update phase. For a lot of React developers, the first major (and to be honest ongoing) challenge is understanding and managing state in Components. State itself can be a controversial topic in the community. Many developers avoid state at all cost. Other systems, such as [MobX](http://mobxjs.github.io/mobx/), is in essence trying to replace it. Many uses of state can fall into the anti-pattern, such as transferring `props` into `state` [^1].
  
  Fundamentally, state can be a tricky and confusing topic. When do we use state? What data should or shouldn't be stored in state? Should we even use state at all? To be honest, this is a topic that we are still trying to grapple with ourselves. 

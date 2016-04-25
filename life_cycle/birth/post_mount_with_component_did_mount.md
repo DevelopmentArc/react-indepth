@@ -1,5 +1,5 @@
 # Post-mount with `componentDidMount()`
- The last step in the Birth/Mount process life cycle phase is our post-mount access via `componentDidMount()`. This method is called once all our children Elements and our Component instance are mounted onto the Native UI. When this method is called we now have access to the Native UI (DOM), access to our children `refs` and the ability to *potentially* trigger a new render pass.
+ The last step in the Birth/Mount life cycle phase is our post-mount access via `componentDidMount()`. This method is called once all our children Elements and our Component instance are mounted onto the Native UI. When this method is called we now have access to the Native UI (DOM), access to our children `refs` and the ability to *potentially* trigger a new render pass.
  
 ## Understanding call order
  Similar to `componentWillMount()`, `componentDidMount()` is only called one time. Unlike our other Birth/Mount methods, where we start at the top and work down, `componentDidMount()` works from the bottom up. Let's consider the following Component/Element Tree:

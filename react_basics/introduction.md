@@ -1,4 +1,4 @@
-# [WIP] React Basics
+# [WIP] React From The Inside Out
 
 ***This section is currently being researched***
 

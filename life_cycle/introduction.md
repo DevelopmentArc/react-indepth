@@ -13,6 +13,6 @@
  The next phase of the life cycle is the Growth/Update phase.  In this phase, we get new `props`, change `state`, handle user interactions and communicate with the component hierarchy. This is were we spend most of our time in the Component's life. Unlike Birth or Death, we repeat this phase over and over.
  
  ### [Phase 3: Death / Unmount](life_cycle/death_unmounting_indepth.md)
- The final phase of the life cycle is the Death/Unmount phase. This phase occurs when a component instance is unmounted from the Native UI. This can occur when the user navigates away, the UI page changes, a component is hidden (like a drawer), etc. Death occurs once and then Component is then ready for garbage collection.
+ The final phase of the life cycle is the Death/Unmount phase. This phase occurs when a component instance is unmounted from the Native UI. This can occur when the user navigates away, the UI page changes, a component is hidden (like a drawer), etc. Death occurs once and then Component is then ready for Garbage Collection.
 
 ***Next Up:*** [Life Cycle Methods Overview](lifecycle_methods_overview.md)

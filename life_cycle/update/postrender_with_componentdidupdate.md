@@ -20,7 +20,39 @@ componentDidUpdate(prevProps, prevState) {
   }
 }
 ```
- 
- ---
+
+Here we access our Chart instance and update it when the data has changed[^2]. 
+
+### Another render pass?
+We can also query the Native UI and get sizing, CSS styling, etc. This may require us to update our internal state or props for children. If this is the case we can call `this.setState()` or `forceUpdate()` here, but this opens a lot of potential issues because it forces a new render.
+
+One of the worst things to do is do an unchecked `setState()`:
+
+```javascript
+componentDidUpdate(prevProps, prevState) {
+  // DO NOT DO THIS!!!
+  let height = $( ReactDOM.findDOMNode(this) ).height();
+  this.setState({ internalHeight: height });
+}
+```
+
+By default, our `shouldComponentUpdate()` returns true, so if we used the above code we would fall into an infinite render loop. We would render, then call did update which sets state, triggering another render.
+
+If you need to do something like this, then you should both implement a check at  `shouldComponentUpdate()` and also add other checks to determine when a resize really did occur.
+
+```javascript
+componentDidUpdate(prevProps, prevState) {
+  // One possible fix...
+  let height = $( ReactDOM.findDOMNode(this) ).height();
+  if (this.state.height !== height ) {
+    this.setState({ internalHeight: height });
+  }
+}
+```
+
+
+---
  
  [^1] This is a risky behavior and can easily enter an infinite loop. Proceed with caution.
+ 
+ [^2] This example assumes that the data is pure and not mutated.

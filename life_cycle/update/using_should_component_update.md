@@ -59,7 +59,16 @@ The above code is extracted from the React addon/source[^1]. The mixin defines t
 ### Mutability and pure methods
  It is important to note that the `shallowCompare` method simply uses `===` to check each instance. This is why the React team calls the mixin *pure*, because it will not properly check against mutable data.
 
-Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array. The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
+Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array. 
+
+```javascript
+// psuedo code
+this.setState({ data: [1, 2, 3] });
+
+<MyComponent data={ this.state.data } />
+```
+
+The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
 
 This is where systems like [Redux](http://redux.js.org/), require pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is returned. This allows for `shallowCompare()` to see the change and update the component.
 

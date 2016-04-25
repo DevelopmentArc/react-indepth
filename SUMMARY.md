@@ -12,5 +12,6 @@
      * [Post-Mount with componentDidMount()](life_cycle/birth/post_mount_with_component_did_mount.md)
    * [Growth/Update In-depth](life_cycle/growth_update_indepth.md)
      * [Updating and componentWillReceiveProps()](life_cycle/update/component_will_receive_props.md)
+     * [Using shouldComponentUpdate()](life_cycle/update/using_should_component_update.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
 

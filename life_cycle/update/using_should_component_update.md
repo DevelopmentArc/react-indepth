@@ -58,9 +58,7 @@ The above code is extracted from the React addon/source[^1]. The mixin defines t
 
 ### Mutability and pure methods
  It is important to note that the `shallowCompare` method simply uses `===` to check each instance. This is why the React team calls the mixin *pure*, because it will not properly check against mutable data.
-
-Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array. 
-
+ 
 ```javascript
 // psuedo code
 this.setState({ data: [1, 2, 3] });
@@ -68,20 +66,24 @@ this.setState({ data: [1, 2, 3] });
 <MyComponent data={ this.state.data } />
 ```
 
+Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array.
+
 The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
 
-This is where systems like [Redux](http://redux.js.org/), require pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is returned. This allows for `shallowCompare()` to see the change and update the component.
+This is where systems like [Redux](http://redux.js.org/) requires pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is always returned. This allows for `shallowCompare()` to see the change and update the component.
 
-Other ways to handle this is to use an immutable data system, such as [Immutable.js](https://facebook.github.io/immutable-js/), which prevents developers from accidentally mutating data. By enforcing immutable data structures, we can leverage `shouldComponentUpdate()` and have it verify of our `props` and `state` have changed[^2].
+Other ways to handle this is to use an immutable data system, such as [Immutable.js](https://facebook.github.io/immutable-js/). These data structures prevent developers from accidentally mutating data. By enforcing immutable data structures, we can leverage `shouldComponentUpdate()` and have it verify of our `props` and `state` have changed[^2].
 
 ### Stop renders at the source
  If you recall our nested Component structure:
  
  ![](../birth/react-element-tree.png)
  
- By default, if an Update is triggered in **A**, then all the other children will also go through their updates, even if the data hasn't been triggered. This can easily cause a performance issue, because now we have many Components having to go through each step of the process.
+ By default, if an Update is triggered in **A**, then all the other children will also go through their updates. This can easily cause a performance issue, because now we have many Components going through each step of the process.
  
  By adding logic checks in `shouldComponentUpdate()` at **A** we can prevent all its children from re-rendering. This can improve general performance significantly. But keep in mind, if you prevent **A** from passing props down to the children you may prevent required renders from occurring.
+ 
+***Next Up:*** [Tapping into `componentWillUpdate()`](tapping_into_componentwillupdate.md)
 
 ---
 

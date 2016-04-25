@@ -9,6 +9,7 @@ The `componentWillUpdate()` is a chance for us to handle configuration, update o
 \\ a similar version to our componentWillMount method
 componentWillUpdate(nextProps, nextState) {
   let mode;
+  // we need to access nextProps here, not this.props
   if (nextProps.props.age > 70) {
     mode = 'old';
   } else if (this.props.age < 18) {

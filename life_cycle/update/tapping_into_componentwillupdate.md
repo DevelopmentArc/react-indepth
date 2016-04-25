@@ -22,3 +22,5 @@ componentWillUpdate(nextProps, nextState) {
 ```
  
 Because we have not rendered yet, we can still call `setState()` safely and not trigger another update. As you can see, the functionality we define here is to prepare for our render.
+
+***Up Next:*** [Re-rendering and Children Updates](rerendering_and_children_updates.md)

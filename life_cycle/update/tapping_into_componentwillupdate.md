@@ -4,5 +4,20 @@
  Just like `componentWillMount()`, this method is called before `render()`. Because we have not rendered yet, our Component the Native UI (DOM, etc.) will reflect the old rendered UI. Unlike, `componentWillMount()` we can technically access `refs` but it is not recommended.
 
 The `componentWillUpdate()` is a chance for us to handle configuration, update our state, and in general prepare for the next render. If we want to access the old props or state, we can call `this.props` or `this.state`. We can then compare them to the new values and make changes/calculations as required.
+
+```javascript
+\\ a similar version to our componentWillMount method
+componentWillUpdate(nextProps, nextState) {
+  let mode;
+  if (nextProps.props.age > 70) {
+    mode = 'old';
+  } else if (this.props.age < 18) {
+    mode = 'young';
+  } else {
+    mode = 'middle';
+  }
+  this.setState({ mode });
+}
+```
  
  

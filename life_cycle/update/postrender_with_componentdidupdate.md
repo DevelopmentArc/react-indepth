@@ -52,7 +52,7 @@ componentDidUpdate(prevProps, prevState) {
 
 In general, this is not a common requirement and re-rendering has performance impacts for your Component and applications. Keep this in mind if you find yourself having to add second render passed in `componentDidUpdate()`.
 
-***Up Next:*** Death/Unmounting In-depth
+***Up Next:*** [Death/Unmounting In-depth](../death_unmounting_indepth.md)
 
 ---
  

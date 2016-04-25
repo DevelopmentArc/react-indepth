@@ -14,6 +14,6 @@
        * [Updating and componentWillReceiveProps()](life_cycle/update/component_will_receive_props.md)
        * [Using shouldComponentUpdate()](life_cycle/update/using_should_component_update.md)
        * [Tapping into componentWillUpdate()](life_cycle/update/tapping_into_componentwillupdate.md)
-       * Re-rendering and Children Updates
+       * [Re-rendering and Children Updates](life_cycle/update/rerendering_and_children_updates.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
 

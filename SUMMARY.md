@@ -13,5 +13,6 @@
    * [Growth/Update In-depth](life_cycle/growth_update_indepth.md)
      * [Updating and componentWillReceiveProps()](life_cycle/update/component_will_receive_props.md)
      * [Using shouldComponentUpdate()](life_cycle/update/using_should_component_update.md)
+     * [Tapping into componentWillUpdate()](life_cycle/update/tapping_into_componentwillupdate.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
 

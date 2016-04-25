@@ -133,9 +133,9 @@ var Person = React.createClass({
 ```
 
 ### State defaults
- It is important to keep in mind that if we do not define a state in the constructor/getInitialState then the state will be `undefined`. Because the state is `undefined` and not an empty object (`{}`) if you try to query the state later on this will be an issue.
+ It is important to keep in mind that if we do not define a state in the constructor/getInitialState then the state will be `undefined`. Because the state is `undefined` and not an empty Object (`{}`), if you try to query the state later on this will be an issue.
  
- In general, we want to set a default value for all our state properties. There are some edge cases where the initial value for the state property maybe `null` or `undefined`. If this state happens to be only state property, it maybe tempting to skip setting a default state. But, if our code tries to access the property you will get an error.
+ In general, we want to set a default value for all our state properties. There are some edge cases where the initial value for the state property may be `null` or `undefined`. If this state happens to be only state property, it maybe tempting to skip setting a default state. But, if our code tries to access the property you will get an error.
  
  ```javascript
  class Person extends React.Component {

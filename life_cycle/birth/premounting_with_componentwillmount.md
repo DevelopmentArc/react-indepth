@@ -1,7 +1,7 @@
 # Pre-mounting with `componentWillMount()`
  Now that the props and state are set, we finally enter the realm of Life Cycle methods. The first true Life Cycle called is `componentWillMount()`. This method is only called one time, which is before the initial render. Since this method is called before `render()` our Component will not have access to the Native UI (DOM, etc.). We also will not have access to the children `refs`, because they are not created yet.
 
-The `componentWillMount()` is a chance for use to handle configuration, update our state, and in general prepare for the first render. At this point, props and initial state are define. We can safely query `this.props` and `this.state`, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values.
+The `componentWillMount()` is a chance for us to handle configuration, update our state, and in general prepare for the first render. At this point, props and initial state are define. We can safely query `this.props` and `this.state`, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values.
 
 ```javascript
 import React from 'react';
@@ -47,4 +47,4 @@ Other uses for `componentWillMount()` includes registering to global events, suc
 
 ---
 
-[^1] It's important to rembember that the Native UI elements (such as DOM) do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.
+[^1] It's important to remember that the Native UI elements (such as DOM) do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

@@ -19,7 +19,7 @@
 4. Children Life cycle methods
 5. `componentWillUpdate()`
 
-## Death / UnMount
+## Death / Unmount
 1. `componentWillUnmount()`
 4. Children Life cycle methods
 5. Instance destroyed for Garbage Collection

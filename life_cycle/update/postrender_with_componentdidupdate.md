@@ -3,6 +3,8 @@
  
  When `componentDidUpdate()` is called, two arguments are passed: `prevProps` and `prevState`. This is the inverse of `componentWillUpdate()`. The passed values are what the values where and accessing `this.props` and `this.state` are the current values.
  
+ Just like `componentDidMount()`, the `componentDidUpdate()` is called after all of the children are updated. 
+ 
  ---
  
  [^1] This is a risky behavior and can easily enter an infinite loop. Proceed with caution.

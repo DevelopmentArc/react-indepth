@@ -1,5 +1,5 @@
 # The Life Cycle Recap
-We have now worked through the three phases of the React life cycle: [Birth/Mounting](birth_mounting_indepth.md), [Growth/Update](growth_update_indepth.md) and finally [Death/Un-mounting](death_unmounting_indepth.md). By having these phases and corresponding methods React provides us a clear path for developing Components. These phases also allow us to begin to optimize our Components and our entire application.
+We have now worked through the three phases of the React life cycle: [Birth/Mounting](birth_mounting_indepth.md), [Growth/Update](growth_update_indepth.md) and finally [Death/Unmount](death_unmounting_indepth.md). By having these phases and corresponding methods React provides us a clear path for developing Components. These phases also allow us to begin to optimize our Components and our entire application.
 
 To review, the methods and order called are:
 

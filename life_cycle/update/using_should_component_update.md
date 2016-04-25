@@ -4,7 +4,7 @@
  If you recall, React does [not deeply compare `props`](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) by default. When `props` or `state` is updated React assumes we need to re-render the content. But, if the `props` or `state` have not changed, should we really be re-rendering?
  
 ## Preventing unnecessary renders
- The `shouldComponentUpdate()` method is the first real optimization method that we can leverage in React. Here we can look at our current and new `props` & `state` and make a choice if we should move on. [React's PureRenderMixin](https://facebook.github.io/react/docs/pure-render-mixin.html) does exactly this. It checks the current props and state, compares it to the next props and state and then returns `true` if they are different, or `false` if they are the same.
+ The `shouldComponentUpdate()` method is the first real life cycle optimization method that we can leverage in React. We can look at our current and new `props` & `state` and make a choice if we should move on. [React's PureRenderMixin](https://facebook.github.io/react/docs/pure-render-mixin.html) does exactly this. It checks the current props and state, compares it to the next props and state and then returns `true` if they are different, or `false` if they are the same.
  
  ```javascript
 /**
@@ -57,9 +57,9 @@ var ReactComponentWithPureRenderMixin = {
 The above code is extracted from the React addon/source[^1]. The mixin defines the `shouldComponentUpdate(nextProps, nextState)` and compares the instance's `props` against the `nextProp` and the `state` against the `nextState`.
 
 ### Mutability and pure methods
-It is important to note that the `shallowCompare` method simply uses `===` to check each instance. This is why the React team calls the mixin *pure* because it will not properly check against mutable data. 
+ It is important to note that the `shallowCompare` method simply uses `===` to check each instance. This is why the React team calls the mixin *pure*, because it will not properly check against mutable data.
 
-Let's go back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array. The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
+Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array. The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
 
 This is where systems like [Redux](http://redux.js.org/), require pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is returned. This allows for `shallowCompare()` to see the change and update the component.
 

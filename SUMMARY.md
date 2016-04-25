@@ -17,4 +17,5 @@
        * [Re-rendering and Children Updates](life_cycle/update/rerendering_and_children_updates.md)
        * [Post-Render with componentDidUpdate()](life_cycle/update/postrender_with_componentdidupdate.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
+   * The Life Cycle Recap
 

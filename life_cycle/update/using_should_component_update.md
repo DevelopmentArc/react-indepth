@@ -83,6 +83,11 @@ Other ways to handle this is to use an immutable data system, such as [Immutable
  
  By adding logic checks in `shouldComponentUpdate()` at **A** we can prevent all its children from re-rendering. This can improve general performance significantly. But keep in mind, if you prevent **A** from passing props down to the children you may prevent required renders from occurring.
  
+## Jump ahead with `forceUpdate()`
+ Like `componentWillReceiveProps()`, we can skip `shouldComponentUpdate()` by calling `forceUpdate()` in the Component. This sets a flag on the Component when it gets added to the dirty queue. When flagged, `shouldComponentUpdate()` is ignored. Because we are forcing an update we are stating something has changed and the Component *must* re-render.
+ 
+ Since `forceUpdate()` is a brute force method, it should always be used with caution and careful consideration. You can easily get into an endless render loop if you keep triggering `forceUpdate` over and over. Troubleshooting infinite render loops can be very tricky. So, when reaching for `forceUpdate` keep all this in mind.
+ 
 ***Next Up:*** [Tapping into `componentWillUpdate()`](tapping_into_componentwillupdate.md)
 
 ---

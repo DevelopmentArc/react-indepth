@@ -1,2 +1,2 @@
-# Post-Render with componentDidUpdate()
+# Post-Render with `componentDidUpdate()`
 

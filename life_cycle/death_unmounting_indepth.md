@@ -12,7 +12,7 @@
  
  React starts with the Element being removed, for example **A**, and calls `componentWillUnmount()` on it. Then React goes to the first child (**A.0**) and does the same, working its way down to the last child. Once all the calls have been made, then React will remove the elements from the UI and ready them for Garbage Collection.
  
- ***Up Next:*** Life Cycle Recap 
+ ***Up Next:*** The Life Cycle Recap 
  
 
  

@@ -12,7 +12,7 @@
   
   ```javascript
   render() {
-    // DON'T DO THIS!
+    // BAD: DON'T DO THIS!
     this.props.name = 'Tim';
     return (
       <div className={ classNames('person', this.state.mode) }>

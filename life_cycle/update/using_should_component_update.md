@@ -59,6 +59,8 @@ The above code is extracted from the React addon/source[^1]. The mixin defines t
 ### Mutability and pure methods
  It is important to note that the `shallowCompare` method simply uses `===` to check each instance. This is why the React team calls the mixin *pure*, because it will not properly check against mutable data.
  
+ Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array.
+ 
 ```javascript
 // psuedo code
 this.setState({ data: [1, 2, 3] });
@@ -66,9 +68,7 @@ this.setState({ data: [1, 2, 3] });
 <MyComponent data={ this.state.data } />
 ```
 
-Let's think back to our `data` props Array example where we use `push()` to add a new piece of data onto the Array.
-
-The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is not considered to be *pure*.
+The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is **not** considered to be *pure*.
 
 This is where systems like [Redux](http://redux.js.org/) requires pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is always returned. This allows for `shallowCompare()` to see the change and update the component.
 
@@ -81,7 +81,7 @@ Other ways to handle this is to use an immutable data system, such as [Immutable
  
  By default, if an Update is triggered in **A**, then all the other children will also go through their updates. This can easily cause a performance issue, because now we have many Components going through each step of the process.
  
- By adding logic checks in `shouldComponentUpdate()` at **A** we can prevent all its children from re-rendering. This can improve general performance significantly. But keep in mind, if you prevent **A** from passing props down to the children you may prevent required renders from occurring.
+ By adding logic checks in `shouldComponentUpdate()` at **A** we can prevent all its children from re-rendering. This can improve overall performance significantly. But keep in mind, if you prevent **A** from passing props down to the children you may prevent required renders from occurring.
  
 ## Jump ahead with `forceUpdate()`
  Like `componentWillReceiveProps()`, we can skip `shouldComponentUpdate()` by calling `forceUpdate()` in the Component. This sets a flag on the Component when it gets added to the dirty queue. When flagged, `shouldComponentUpdate()` is ignored. Because we are forcing an update we are stating something has changed and the Component *must* re-render.

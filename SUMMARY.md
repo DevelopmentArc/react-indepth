@@ -15,6 +15,6 @@
        * [Using shouldComponentUpdate()](life_cycle/update/using_should_component_update.md)
        * [Tapping into componentWillUpdate()](life_cycle/update/tapping_into_componentwillupdate.md)
        * [Re-rendering and Children Updates](life_cycle/update/rerendering_and_children_updates.md)
-       *  Post-Render with componentDidUpdate()
+       * [Post-Render with componentDidUpdate()](life_cycle/update/postrender_with_componentdidupdate.md)
    * [Death/Unmounting In-depth](life_cycle/death_unmounting_indepth.md)
 

@@ -29,7 +29,7 @@ Because props are immutable by the Component itself, the parent must provide the
 ## Starting Update: `setState()`
  Similar to changing `props`, when a Component changes its state value[^1] via `this.setState()`, this also triggers a new Update phase. For a lot of React developers, the first major (and to be honest ongoing) challenge is managing state in Components. State itself can be a controversial topic in the community. Many developers avoid state at all cost. Other systems, such as [MobX](http://mobxjs.github.io/mobx/), are in essence trying to replace it. Many uses of state can fall into different anti-patterns, such as transferring `props` into `state`[^2].
  
- Fundamentally, state can be a tricky and confusing topic. When do we use state? What data should or shouldn't be stored in state? Should we even use state at all? To be honest, this is a topic that we are still trying to grapple with ourselves. 
+ Fundamentally, state can be a tricky and confusing topic. When do we use state? What data should or shouldn't be stored in state? Should we even use state at all? To be honest, this is a topic that we are still trying to grapple with ourselves.
  
  Keeping that in mind, it is still important to understand how state works in React. We will continue to discuss state in-depth and how the mechanics work. We will try to share best practices that we have found, but in general what is good today will probably be bad tomorrow.
  

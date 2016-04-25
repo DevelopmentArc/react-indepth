@@ -62,9 +62,10 @@ If somewhere in our app, a process updates the data array via `push()`, this cha
 With this being said, `componentWillReceiveProps()` allows us to check and see if new props are coming in and we can make choices based on the data. We just need to make sure we never assume the props are different in this method. Be sure to read the great post [(A =&gt; B) !=&gt (B =&gt A)](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) by Jim Sproch.
 
 ### Skipping this method
- Unlike our methods in the Mounting phase, not all our Update phase are called every time. For example, we will skip `componentWillReceiveProps()` if the Update is triggered by a set state. Going back to our Form.js example above:
+ Unlike the other methods in the Mounting phase, not all our Update phase methods are called every time. For example, we will skip `componentWillReceiveProps()` if the Update is triggered by a state change. Going back to our Form.js example above:
  
  ```javascript
+ // ...
  handleChange(event) {
     this.setState({ name: event.currentTarget.value });
   }
@@ -77,6 +78,9 @@ With this being said, `componentWillReceiveProps()` allows us to check and see i
       </div>
     );
   }
+// ...
  ```
 
-When the user types in the `<input />` we trigger a `setState()` method. This will trigger an Update phase in our Form Component and the Person Component.
+When the user types in the `<input />` we trigger a `setState()` method. This will trigger an Update phase in our Form Component and the Person Component. For our Form Component, we did not receive new props, so `componentWillReceiveProps()` will be skipped.
+
+***Up Next:*** Using `shouldComponentUpdate()

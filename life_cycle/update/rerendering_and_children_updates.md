@@ -5,6 +5,6 @@
  
  If the keys are the same, then React will pass the `props` to the existing instance, kicking off its Update life cycle. If we have added new components or changed keys, React will create new instances from the Element data. These new Components then entire the Birth/Mounting phase.
  
- ***Up Next:*** Post-Render with `componentDidUpdate()`
+ ***Up Next:*** [Post-Render with `componentDidUpdate()`](postrender_with_componentdidupdate.md)
  
  

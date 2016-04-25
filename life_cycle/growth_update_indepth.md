@@ -6,7 +6,7 @@
  In this Section, we will dive into the different methods. We'll examine the order of the methods called and how they affect the overall process. We will also discuss what tasks are best handled during each method and discuss application optimization.
  
  ## Starting Update: Changing Props
-  As mentioned earlier, we have three ways to start the Growth/Update phase. The first way is when the components `props` update. This occurs when either the root Element (ex: `ReactDOM.render(<MyComponent data={ dataVaule } />, ...)` has the props value change or the parent of the Component's prop changes.
+  As mentioned earlier, we have three ways to start the Growth/Update phase. The first way is when the components `props` update. This occurs when either the root Element (ex: `ReactDOM.render(<MyComponent data={ dataVaule } />, ...)` has the `props` value changed or the parent of the Component's `prop` changes.
   
   From a Component's instance perspective (such as `<Person name="Bill" />`) the passed in props are immutable. In other words, the Person instance cannot update the value name internally. In fact, if you try you will get an Error in React.
   

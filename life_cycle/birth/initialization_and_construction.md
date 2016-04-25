@@ -86,7 +86,7 @@ Keep this in mind when defining default props, because tracing down a `null` val
 ## Initial State
  Once the final props are defined (passed w/ defaults), the Component instance configures the initial `state`. This process occurs in the construction of the instance itself. Unlike props, the Component state is an internal object that is not defined by outside values.
  
- To define the initial state depends on how you declare your Component. For ES6 we declare the state in the constructor. Just like `defaultProps`, the initial state takes an object.
+ To define the initial `state` depends on how you declare your Component. For ES6 we declare the state in the constructor. Just like `defaultProps`, the initial state takes an object.
  
  **For ES6 Class**
 ```javascript

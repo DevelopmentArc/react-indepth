@@ -1,5 +1,5 @@
 # React Life Cycle Methods Overview
- The React development team provides a series of hooks we can tap into at each phase of the life cycle. These method hooks inform us of where the component is in the life cycle and what we can and cannot do.
+ The React development team provides a series of hooks we can tap into at each phase of the life cycle. These method hooks inform us of where the Component is in the life cycle and what we can and cannot do.
   
   Each of the life cycle methods are called in a specific order and at a specific time. The methods are also tied to different parts of the Life Cycle. Here are the methods broken down in order and by their corresponding life cycle phase [^1]:
   

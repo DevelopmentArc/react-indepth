@@ -38,7 +38,7 @@ componentDidUpdate(prevProps, prevState) {
 
 By default, our `shouldComponentUpdate()` returns true, so if we used the above code we would fall into an infinite render loop. We would render, then call did update which sets state, triggering another render.
 
-If you need to do something like this, then you can implement a check at  `shouldComponentUpdate()` or add other checks to determine when a re-size really occurred.
+If you need to do something like this, then you can implement a check at  `shouldComponentUpdate()` and/or add other checks to determine when a re-size really occurred.
 
 ```javascript
 componentDidUpdate(prevProps, prevState) {
@@ -50,6 +50,9 @@ componentDidUpdate(prevProps, prevState) {
 }
 ```
 
+In general, this is not a common requirement and re-rendering has performance impacts for your Component and applications. Keep this in mind if you find yourself having to add second render passed in `componentDidUpdate()`.
+
+***Up Next:*** Death/Unmounting In-depth
 
 ---
  

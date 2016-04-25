@@ -2,7 +2,7 @@
  During the initialization of the Component from the Element, the `prop`s and `state` are defined. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
 
 ## Default Props
-As we mentioned earlier, the Element instance contains the current `props` that are being passed to Component instance. Most of the time, all the available `props` on the Component are not required. Yet, some times we do need to have values for the `props` for our Component to render correctly.
+As we mentioned earlier, the Element instance contains the current `props` that are being passed to Component instance. Most of the time, all the available `props` on the Component are not required. Yet, some times we do need to have values for all the `props` for our Component to render correctly.
 
 For example, we have a simple component that renders a name and age.
 

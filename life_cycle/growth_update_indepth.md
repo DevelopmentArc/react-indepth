@@ -38,10 +38,10 @@ Because props are immutable by the Component itself, the parent must provide the
  
  When we call `setState()` this is considered a partial state change. We are not flushing/replacing the entire state, just updating part(s) of it. React uses a queuing system[^4] to apply the partial state change. Because we can set the state multiple times in a method chain, a change queue is constructed to manage all the various updates. Once the state change is added to the queue, React makes sure the Component is added to the dirty queue. This dirty queue tracks the Component instances that have changed. Essentially, this is what tells React which Components need to enter the Update phase later.
  
- When working with state, it is very important to keep this in mind. A common error is to set state in one method and then later in the same synchronous method chain try to access the state value. This can sometimes cause tricky bugs, especially if you expose state values via public methods on your Component, such as `value()`. We will talk later about when `this.state` is finalized and how to delay access for certain types of calls.
+ When working with state, it is very important to keep this in mind. A common error is to set state in one method and then later in the same synchronous method chain try to access the state value. This can sometimes cause tricky bugs, especially if you expose state values via public methods on your Component, such as `value()`. We will talk later about when `this.state` is finalized.
  
 ## Starting Update: `forceUpdate`
- There is one more way to kick off an Update phase. There is a special method on a component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this in-depth later on.
+ There is one more way to kick off an Update phase. There is a special method on a Component called `forceUpdate()`. This does exactly what you think, it forces the Component into an Update phase. The `forceUpdate()` method has some specific ramifications about how the life cycle methods are processed and we will discuss this in-depth later on.
 
  
  Up Next: [Updating and `componentWillReceiveProps()`](update/component_will_receive_props.md)

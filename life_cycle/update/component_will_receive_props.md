@@ -83,4 +83,4 @@ With this being said, `componentWillReceiveProps()` allows us to check and see i
 
 When the user types in the `<input />` we trigger a `setState()` method. This will trigger an Update phase in our Form Component and the Person Component. For our Form Component, we did not receive new props, so `componentWillReceiveProps()` will be skipped.
 
-***Up Next:*** Using `shouldComponentUpdate()
+***Up Next:*** [Using `shouldComponentUpdate()](using_should_component_update.md)

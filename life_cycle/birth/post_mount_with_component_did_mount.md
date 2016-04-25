@@ -2,7 +2,7 @@
  The last step in the Birth/Mount life cycle phase is our post-mount access via `componentDidMount()`. This method is called once all our children Elements and our Component instances are mounted onto the Native UI. When this method is called we now have access to the Native UI (DOM, UIView, etc.), access to our children `refs` and the ability to *potentially* trigger a new render pass.
  
 ## Understanding call order
- Similar to `componentWillMount()`, `componentDidMount()` is only called one time. Unlike our other Birth/Mount methods, where we start at the top and work down, `componentDidMount()` works from the bottom up. Let's consider the following Component/Element Tree:
+ Similar to `componentWillMount()`, `componentDidMount()` is only called one time. Unlike our other Birth/Mount methods, where we start at the top and work down, `componentDidMount()` works from the bottom up. Let's consider the following Component/Element Tree again:
  
  ![React Element Tree](react-element-tree.png)
 
@@ -163,7 +163,7 @@ export default class Chart extends React.Component {
  When integrating 3rd party libraries, we often need to bind to events, such as the user interacting with the Chart. This is where we would set up our listeners post-library initialization. We can also add more global listeners here, if we did not want to setup the listeners in the `componentWillMount()` call.
 
 ## Starting another render pass [^1]
- There are some unique situations were we may have a second render pass post-Birth/Mount. This is not a common situation and generally occurs when we have to change our current state based on the Native UI Layout. This could be calculating dynamic row height or column widths in a data table. It could be having to re-position the component's children based on how they are sized the first time.
+ There are some unique situations were we may have a second render immediately after Birth/Mount. This is not a common situation and generally occurs when we have to change our current state based on the Native UI Layout. This could be calculating dynamic row height or column widths in a data table. It could be having to re-position the component's children based on how they are sized the first time.
  
  If you require this kind of functionality, you have the ability to call `this.setState()` or `forceUpdate()` in your `componentDidMount()`. If you change state or force an update (more on this feature later), your component will begin another render pass and enter the [Growth/Update Phase](../growth_update_indepth.md). Because `componentDidMount()` is a called only once, we don't have to worry about this method causing an infinite loop. But, this process can lead to issues down the road if you do not take the time to walk through all the potential ramifications of multiple renders.
  

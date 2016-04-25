@@ -31,7 +31,7 @@ Because props are immutable by the Component itself, the parent must provide the
  
  Fundamentally, state can be a tricky and confusing topic. When do we use state? What data should or shouldn't be stored in state? Should we even use state at all? To be honest, this is a topic that we are still trying to grapple with ourselves.
  
- Keeping that in mind, it is still important to understand how state works in React. We will continue to discuss state in-depth and how the mechanics work. We will try to share best practices that we have found, but in general what is good today will probably be bad tomorrow.
+ Keeping that in mind, it is still important to understand how state mechanics works in React. We will continue to discuss state in-depth and how the mechanics work. We will try to share best practices that we have found, but in general what is good today will probably be bad tomorrow.
  
  ### The asynchronicity of state
  Before we move on to the final way to start an update, we should talk a little about how state is managed in the internals of React. When developers first start using `setState()` there is an assumption that when you call `this.state` the values applied on the set will be available. This is not true. The `setState()` method should be treated as an asynchronous process [^3]. So how does `setState()` work?

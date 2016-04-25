@@ -31,7 +31,7 @@ export default class Form extends React.Component {
 }
 ```
 
- Any time the user types into the `<input />` this begins an Update for the Person component. The first method called on the Component is `componentWillReceiveProps(nextProps)` passing in the new `prop` value. This allows us to compare the incoming props against our current props and make logical decisions based on the value. We can get our current props by calling `this.props` and the new value is the `nextProps` argument passed to the method.
+ Any time the user types into the `<input />` this begins an Update for the Person component. The first method called on the Component is `componentWillReceiveProps(nextProps)` passing in the new `prop` value. This allows us to compare the incoming `props` against our current `props` and make logical decisions based on the value. We can get our current props by calling `this.props` and the new value is the `nextProps` argument passed to the method.
  
 ### Updating State
  So why do we need `componentWillReceiveProps`? This is the first hook that allows us to look into the incoming Update. Here we could extract the new props and update our internal state. If we have a state that is a calculation of multiple props, we can safely apply the logic here and store the result using `this.setState()`.

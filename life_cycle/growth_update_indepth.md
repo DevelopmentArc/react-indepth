@@ -24,10 +24,10 @@
   
 > TypeError: Cannot assign to read only property 'name' of object '#&lt;Object&gt;'
 
-Because props are immutable by the Component itself, the parent must provide the new vaules. When new props are passed in via root or the parent, this starts the Update phase.
+Because props are immutable by the Component itself, the parent must provide the new values. When new props are passed in via root or the parent, this starts the Update phase.
 
 ## Starting Update: `setState()`
- Similar to changing `props`, when a Component changes its state value[^1] via `this.setState()`, this also triggers a new Update phase. For a lot of React developers, the first major (and to be honest ongoing) challenge is managing state in Components. State itself can be a controversial topic in the community. Many developers avoid state at all cost. Other systems, such as [MobX](http://mobxjs.github.io/mobx/), is in essence trying to replace it. Many uses of state can fall into the anti-pattern, such as transferring `props` into `state`[^2].
+ Similar to changing `props`, when a Component changes its state value[^1] via `this.setState()`, this also triggers a new Update phase. For a lot of React developers, the first major (and to be honest ongoing) challenge is managing state in Components. State itself can be a controversial topic in the community. Many developers avoid state at all cost. Other systems, such as [MobX](http://mobxjs.github.io/mobx/), are in essence trying to replace it. Many uses of state can fall into the anti-pattern, such as transferring `props` into `state`[^2].
  
  Fundamentally, state can be a tricky and confusing topic. When do we use state? What data should or shouldn't be stored in state? Should we even use state at all? To be honest, this is a topic that we are still trying to grapple with ourselves. 
  

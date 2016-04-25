@@ -3,7 +3,14 @@
  
  We enter this phase when our UI changes and the Element Tree no longer has a matching key to our Component. This could be changing layout or programmatically changing keys (forcing a new Component instance to be created). Once this occurs, React looks at the instance being removed and its children.
  
- ![](birth/react-element-tree.png)
+## Using `componentWillUnmount()`
+ Just like the rest of our life cycle phases, the Death/Unmount phase has a method hook for us. This method allows us to do some cleanup before we are removed from the UI stack. Typically we want to reverse any setup we did in either `componentWillMount()` or `componentDidMount()`.
  
- If we are removing **A**, then React will start with the bottom most child **A.2** and work its way back up the tree.
+ For example, we would want to unregister any global/system/library events, destroy 3rd party UI library elements, etc. If we don't take the time to remove events we can create memory leaks in our system or leave bad references laying around.
+ 
+  ![](birth/react-element-tree.png)
+ 
+ React starts with the Element being removed, for example **A**, and calls `componentWillUnmount()` on it. Then React goes to the first child (**A.0**) and does the same, working its way down to the last child.
+ 
+
  

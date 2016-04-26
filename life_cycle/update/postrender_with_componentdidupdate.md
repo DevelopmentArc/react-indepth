@@ -30,7 +30,7 @@ One of the worst things to do is do an unchecked `setState()`:
 
 ```javascript
 componentDidUpdate(prevProps, prevState) {
-  // DO NOT DO THIS!!!
+  // BAD: DO NOT DO THIS!!!
   let height = $( ReactDOM.findDOMNode(this) ).height();
   this.setState({ internalHeight: height });
 }

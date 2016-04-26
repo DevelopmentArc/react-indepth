@@ -24,7 +24,7 @@ componentDidUpdate(prevProps, prevState) {
 Here we access our Chart instance and update it when the data has changed[^2]. 
 
 ### Another render pass?
-We can also query the Native UI and get sizing, CSS styling, etc. This may require us to update our internal state or props for children. If this is the case we can call `this.setState()` or `forceUpdate()` here, but this opens a lot of potential issues because it forces a new render.
+We can also query the Native UI and get sizing, CSS styling, etc. This may require us to update our internal state or `props` for our children. If this is the case we can call `this.setState()` or `forceUpdate()` here, but this opens a lot of potential issues because it forces a new render.
 
 One of the worst things to do is do an unchecked `setState()`:
 

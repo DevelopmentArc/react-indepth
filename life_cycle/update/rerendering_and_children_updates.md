@@ -5,9 +5,9 @@
  
  ![](react-tree-update.png)
  
- React compares the current Element tree structure returned from the `render()` method. React uses the generated keys (or assigned keys) to match each Element to a Component instance. React determines if we have new instances, removing instances or are updating existing instances.
+ React compares the current Element tree structure returned from the `render()` method. React uses the generated keys (or assigned keys) to match each Element to a Component instance. React determines if we have new instances (**A.3**), removing instances (**A.0.1**) or are updating existing instances (**A**, **A.0**, **A.0.0**).
  
- If the keys are the same, then React will pass the `props` to the existing instance, kicking off its Update life cycle. If we have added new components or changed keys, React will create new instances from the Element data. These new Components then entire the Birth/Mounting phase.
+ If the keys are the same, then React will pass the `props` to the existing instance, kicking off its Update life cycle. If we have added new Components or changed keys, React will create new instances from the Element data. These new Components then enter the Birth/Mounting phase.
  
  ***Up Next:*** [Post-Render with `componentDidUpdate()`](postrender_with_componentdidupdate.md)
  

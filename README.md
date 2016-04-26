@@ -7,6 +7,6 @@ The initial process of moving to React was a blend of excitement and at times, p
 
 Our goal with this GitBook is to document our process, share our research and try to organize our experiences into a single living document. Too be honest, this is a pretty lofty goal. We may not achieve this goal, but hopefully we can get some helpful thoughts down. 
 
-We have found the longer your write code, the more you learn and then shortly forget. This means that our writings are just as much for ourselves as for others. With that in mind we hope that as this document grows it will help you, just as much as it helped us to put our own thoughts down.
+We have found the longer you write code, the more you learn and then shortly forget. This means that our writings are just as much for ourselves as for others. With that in mind we hope that as this document grows it will help you, just as much as it helped us to put our own thoughts down.
 
 *James & Aaron*

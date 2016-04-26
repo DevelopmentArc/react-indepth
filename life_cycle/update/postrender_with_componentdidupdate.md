@@ -56,6 +56,6 @@ In general, this is not a common requirement and re-rendering has performance im
 
 ---
  
- [^1] This is a risky behavior and can easily enter an infinite loop. Proceed with caution.
+ [^1] This is a risky behavior and can easily enter an infinite loop. Proceed with caution!
  
  [^2] This example assumes that the data is pure and not mutated.

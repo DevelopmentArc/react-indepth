@@ -8,7 +8,7 @@
  
  For example, we would want to unregister any global/system/library events, destroy 3rd party UI library elements, etc. If we don't take the time to remove events we can create memory leaks in our system or leave bad references laying around.
  
-  ![](birth/react-element-tree.png)
+  ![](update/react-tree-update.png)
  
  React starts with the Element being removed, for example **A**, and calls `componentWillUnmount()` on it. Then React goes to the first child (**A.0**) and does the same, working its way down to the last child. Once all the calls have been made, then React will remove the elements from the UI and ready them for Garbage Collection.
  

@@ -42,8 +42,8 @@ If you need to do something like this, then you can implement a check at  `compo
 
 ```javascript
 componentDidUpdate(prevProps, prevState) {
-  // Another possible fix...
-  let height = $( ReactDOM.findDOMNode(this) ).height();
+  // One possible fix...
+  let height = ReactDOM.findDOMNode(this).offsetHeight);
   if (this.state.height !== height ) {
     this.setState({ internalHeight: height });
   }

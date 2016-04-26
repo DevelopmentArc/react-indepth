@@ -1,7 +1,6 @@
 # Summary
 
 * [Introduction](README.md)
-   * About the Authors
 * [[WIP] React From the Inside Out](react_basics/introduction.md)
 * [The React Life Cycle](life_cycle/introduction.md)
    * [Life Cycle Methods Overview](life_cycle/lifecycle_methods_overview.md)

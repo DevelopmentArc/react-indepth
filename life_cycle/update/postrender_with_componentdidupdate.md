@@ -3,9 +3,9 @@
  
  When `componentDidUpdate()` is called, two arguments are passed: `prevProps` and `prevState`. This is the inverse of `componentWillUpdate()`. The passed values are what the values where and accessing `this.props` and `this.state` are the current values.
  
- ![](../birth/react-element-tree.png)
+ ![](react-tree-update.png)
  
- Just like `componentDidMount()`, the `componentDidUpdate()` is called after all of the children are updated. Just to refresh your memory, **A.2** will have `componentDidUpdate()` called first, then **A.1**, **A.0.1**, **A.0.0**, etc. Walking all the way back up the tree until it finally reaches **A**.
+ Just like `componentDidMount()`, the `componentDidUpdate()` is called after all of the children are updated. Just to refresh your memory, **A.0.0** will have `componentDidUpdate()` called first, then **A.0**, then finally **A**.
  
 ## Common Tasks
  The most common uses of `componentDidUpdate()` is managing 3rd party UI elements and interacting with the Native UI. When using 3rd Party libraries, like our Chart example, we need to update the UI library with new data.

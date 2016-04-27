@@ -1,5 +1,5 @@
 # React In-depth: An exploration of UI development
-At [DevelopmentArc&reg;](http://developmentarc.com) we have a long history with UI application development. We started back in the Authorware/Toolbook days, then moved to Director, then HTML 1.0, moved over to Prototype.js and at the same time Flash. With the release of Flex, we jumped in feet first and then dug deeper into AIR and device development. With the collapse of Flash/Flex we found ourselves back in HTML and JavaScript.
+At [DevelopmentArc&reg;](http://developmentarc.com) we have a love affair with UI application development. We started appreciating  the complexity of UI interface development a long time ago with technologies like Authorware/Toolbook and Director. Quickly our founders moved to HTML 1.0 and to early JavaScript frameworks like  Prototype.js. As the industry progressed we began to focus our attention and business on the Flash Platform. With the release of the Flex framework, we jumped in feet first and then dug deeper into AIR and device development. With the collapse of Flash/Flex we found ourselves back in HTML and JavaScript.
 
 Throughout the years we have continued to try and push the boundaries of UI technologies. Starting, in late 2014, we began initial research and then full adoption of [React.js](https://facebook.github.io/react/) for our UI layer in for web applications.
 

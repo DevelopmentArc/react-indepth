@@ -5,7 +5,7 @@ Unlike any other method in the Life Cycle, `render()` is the one method that exi
 
 In both cases, we have the core principal of keeping `render()` a pure method. What does that mean? That means we shouldn't call `setState()`, query the Native UI or anything else that can mutate the existing state of the application. The reason why is if we do this kind of interaction in `render()`, then it will kickoff another render pass. Which once again, triggers `render()` which then does the same thing... infinitely.
 
-The React development tools are generally great at catching these kinds of errors and will yell at you if you do them. For example, if we did something silly like this
+The [React development tools](https://github.com/facebook/react-devtools) are generally great at catching these kinds of errors and will yell at you if you do them. For example, if we did something silly like this
 
 ```javascript
 render() {

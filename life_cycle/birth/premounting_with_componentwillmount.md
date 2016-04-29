@@ -3,6 +3,7 @@
 
 The `componentWillMount()` is a chance for us to handle configuration, update our state, and in general prepare for the first render. At this point, props and initial state are defined. We can safely query `this.props` and `this.state`, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values.
 
+**Person.js [^1]**
 ```javascript
 import React from 'react';
 import classNames from 'classnames';
@@ -46,6 +47,6 @@ Other uses for `componentWillMount()` includes registering to global events, suc
 ***Next Up:*** [Component `render()`](component_render.md)
 
 ---
-[^1] In our example above, we are use `classNames()`, which was originally included in React addons. However, the method has been removed and moved to it's [own library](https://github.com/JedWatson/classnames) for use with or without React.
+[^1] In our example above, we are use the `classNames()` library, which was originally included as a React Addon. However, the feature has been removed from React and moved to it's [own library](https://github.com/JedWatson/classnames) for use with or without React.
 
 [^2] It's important to remember that many Native UI elements do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

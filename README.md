@@ -1,5 +1,5 @@
 # React In-depth: An exploration of UI development
- At [DevelopmentArc&reg;](http://developmentarc.com) we have a love affair with UI application development. We truyl enjoy the exploration of technologies and frameworks. This process helps us better understand the end-goals and complexity of the application stack.
+ At [DevelopmentArc&reg;](http://developmentarc.com) we have a love affair with UI application development. We truly enjoy the exploration of technologies and frameworks. This process helps us better understand the end-goals and complexity of the application stack.
 
 We discovered early on the need to apply true software development principles to the user interface. This discovery started a long time ago with technologies like Authorware/Toolbook and Director. Quickly we moved to HTML 1.0 and began to build systems with JavaScript frameworks like Prototype.js. With the release of the Flex framework, our focus again shifted to a new platform, Flash. 
 

@@ -56,6 +56,6 @@ So, how does this tie into the life cycle? These descriptor Elements are essenti
 
 ---
 
-[^1] The Native UI layer is the actual system that handles UI rendering to screen. In a browser, this is the DOM. On device, this would be the UIView. React handles the translation of content to the native layer format. The actually visual rendering is offloaded to the platform being used.
+[^1] The Native UI layer is the system that handles UI content rendering to screen. In a browser, this is the DOM. On device, this would be the UIView (or comparable). React handles the translation of Component content to the native layer format.
 
 [^2] Dan Abramov chimed in with this terminology on a StackOverflow question. http://stackoverflow.com/a/31069757

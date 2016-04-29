@@ -1,5 +1,9 @@
 # React In-depth: An exploration of UI development
-At [DevelopmentArc&reg;](http://developmentarc.com) we have a long history with UI application development. We started back in the Authorware/Toolbook days, then moved to Director, then HTML 1.0, moved over to Prototype.js and at the same time Flash. With the release of Flex, we jumped in feet first and then dug deeper into AIR and device development. With the collapse of Flash/Flex we found ourselves back in HTML and JavaScript.
+ At [DevelopmentArc&reg;](http://developmentarc.com) we have a love affair with UI application development. We truly enjoy the exploration of technologies and frameworks. This process helps us better understand the end-goals and complexity of the application stack.
+
+We discovered early on the need to apply true software development principles to the user interface. This discovery started a long time ago with technologies like Authorware/Toolbook and Director. Quickly we moved to HTML 1.0 and began to build systems with JavaScript frameworks like Prototype.js. With the release of the Flex framework, our focus again shifted to a new platform, Flash. 
+
+For a majority, Flash was a negative experience and UI technology. While many arguments are true, we found Flash to be the most advanced cross-platform rendering system available at the time. Flex gave us the application framework necessary to build the large and complex applications clients were requesting. All the while, Flex lent itself to the management of large and diverse teams. Our obsession with Flex included a deep understand of the application and component life cycles, resulting in a 90-page white paper. The paper is still available and continues to be referenced today. With the collapse of the Flash Platform and Flex, we find ourselves back in HTML and JavaScript world. This time our obsession is [React.js](https://facebook.github.io/react/)
 
 Throughout the years we have continued to try and push the boundaries of UI technologies. Starting, in late 2014, we began initial research and then full adoption of [React.js](https://facebook.github.io/react/) for our UI layer in for web applications.
 

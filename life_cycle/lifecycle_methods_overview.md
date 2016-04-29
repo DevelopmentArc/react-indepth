@@ -30,4 +30,4 @@ The order of these methods are strict and called as defined above. Most of the t
 
 ---
 
-[^1] *Most of the methods are the same if you use either `React.createClass` or using ES6 classes, such as `class MyComponent extends React.Component`. A few are different, mainly around how instantiation/creation occurs. We will call these differences out throught the chapter.*
+[^1] *Most of the methods are the same if you use either `React.createClass` or using ES6 classes, such as `class MyComponent extends React.Component`. A few are different, mainly around how instantiation/creation occurs. We will call these differences out throughout the chapter.*

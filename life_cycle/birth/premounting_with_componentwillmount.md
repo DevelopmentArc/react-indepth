@@ -3,6 +3,7 @@
 
 The `componentWillMount()` is a chance for us to handle configuration, update our state, and in general prepare for the first render. At this point, props and initial state are defined. We can safely query `this.props` and `this.state`, knowing with certainty they are the current values. This means we can start performing calculations or processes based on the prop values.
 
+**Person.js [^1]**
 ```javascript
 import React from 'react';
 import classNames from 'classnames';
@@ -39,12 +40,13 @@ Person.defaultProps = { age: 'unknown' };
 export default Person;
 ```
 
-In the example above, you can see that we can call `this.setState()` and update our current state before render. If we need state values on calculations passed in `props`, this is where we should do the logic. 
+In the example above we call `this.setState()` and update our current state before render. If we need state values on calculations passed in `props`, this is where we should do the logic. 
 
-Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If you Component needs to respond to global Native UI events, such as `window` re-sizing or focus changes, this is a good place to do it[^1].
+Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If you Component needs to respond to global Native UI events, such as `window` re-sizing or focus changes, this is a good place to do it[^2].
 
 ***Next Up:*** [Component `render()`](component_render.md)
 
 ---
+[^1] In our example above, we are use the `classNames()` library, which was originally included as a React Addon. However, the feature has been removed from React and moved to it's [own library](https://github.com/JedWatson/classnames) for use with or without React.
 
-[^1] It's important to remember that many Native UI elements do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.
+[^2] It's important to remember that many Native UI elements do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

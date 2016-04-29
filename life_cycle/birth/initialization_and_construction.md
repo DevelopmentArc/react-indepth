@@ -71,7 +71,7 @@ this.props = Object.assign(Constructor.defaultProps, elementInstance.props);
 In the React code snippet, React checks the underlying Class instance to see if it defines `getDefaultProps()` and uses this to set the values. When using ES6 classes we just define it on the class itself. Any property defined on the `passedProps` value is applied/overridden to the property in the default props object.
 
 ### `null` vs. `undefined` props
-When using default props, it is important to under how the React merge process works. Often, we are generating props dynamically based on application state ([Flux](https://facebook.github.io/flux/), [Redux](http://redux.js.org/), [Mobx](https://github.com/mobxjs/mobx), etc.). This means that we can sometimes generate `null` values and pass this as the prop.
+When using default props, it is important to understand how the React merge process works. Often, we are generating props dynamically based on application state ([Flux](https://facebook.github.io/flux/), [Redux](http://redux.js.org/), [Mobx](https://github.com/mobxjs/mobx), etc.). This means that we can sometimes generate `null` values and pass this as the prop.
 
 When assigning default props, the React object merge code sees `null` as a defined value.
 

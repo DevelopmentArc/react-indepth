@@ -1,11 +1,11 @@
 # Component `render()`
-Now that we have pre-configured our Component, we enter the first rendering of our content. As React developers, the `render()` method is the most familiar. We create Elements (generally via JSX) and return them. We access the Component `this.props` and `this.state` and let these values derive how content should be generated. When we access `this.state`, any changes we made during `componentWillMount()` are fully applied. 
+ Now that we have pre-configured our Component, we enter the first rendering of our content. As React developers, the `render()` method is the most familiar. We create Elements (generally via JSX) and return them. We access the Component `this.props` and `this.state` and let these values derive how content should be generated. When we access `this.state`, any changes we made during `componentWillMount()` are fully applied. 
 
 Unlike any other method in the Life Cycle, `render()` is the one method that exists across multiple life cycle phases. It occurs here in Birth and it is where we spend a lot of time in Growth. 
 
 In both cases, we have the core principal of keeping `render()` a pure method. What does that mean? That means we shouldn't call `setState()`, query the Native UI or anything else that can mutate the existing state of the application. The reason why is if we do this kind of interaction in `render()`, then it will kickoff another render pass. Which once again, triggers `render()` which then does the same thing... infinitely.
 
-The React development tools are generally great at catching these kinds of errors and will yell at you if you do them. For example, if we did something silly like this
+The React development mode[^1] is generally great at catching these kinds of errors and will yell at you if you do them. For example, if we did something silly like this
 
 ```javascript
 render() {
@@ -51,3 +51,6 @@ The reason we get this error is because during the first render pass the Native 
 As you can see, having an understanding of the Life Cycle can help troubleshoot and prevent these often un-intuitive issues.
 
 ***Up Next:***[ Managing Children Components and Mounting](managing_children_components_and_mounting.md)
+
+---
+[^1] These warnings come out of the development mode in React. You can also use the [React Development Tools](https://github.com/facebook/react-devtools) to help debug and explore React components.

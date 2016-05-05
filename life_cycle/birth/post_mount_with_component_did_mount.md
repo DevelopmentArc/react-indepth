@@ -158,7 +158,7 @@ export default class Chart extends React.Component {
 }
 ```
 
- In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then passing in data.
+ In the above example, we leverage `componentDidMount()` to generate our chart, bind it to the DOM using `refs` and then pass in data.
 
  When integrating 3rd party libraries, we often need to bind to events, such as the user interacting with the Chart. This is where we would set up our listeners post-library initialization. We can also add more global listeners here, if we did not want to setup the listeners in the `componentWillMount()` call.
 

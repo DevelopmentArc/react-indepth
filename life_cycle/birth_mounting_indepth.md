@@ -1,7 +1,7 @@
 # Birth/Mounting In-depth
  A React Component kicks off the life cycle during the initial application ex: `ReactDOM.render()`. With the initialization of the component instance, we start moving through the Birth phase of the life cycle. Before we dig deeper into the mechanics of the Birth phase, let's step back a bit and talk about what this phase focuses on.
  
- The most obvious focus of the birth phase is the initial configuration for our Component instance. This is were we pass in the `props` that will define the instance. But during this phase there are a lot more moving pieces that we can take advantage of. 
+ The most obvious focus of the birth phase is the initial configuration for our Component instance. This is where we pass in the `props` that will define the instance. But during this phase there are a lot more moving pieces that we can take advantage of. 
  
  In Birth we configure the default `state` and get access to the initial UI display. It also starts the mounting process for children of the Component. Once the children mount, we get first access to the Native UI layer[^1] (DOM, UIView, etc.). With Native UI access, we can start to query and modify how our content is actually displayed. This is also when we can begin the process of integrating 3rd Party UI libraries and components.
  

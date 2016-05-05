@@ -48,7 +48,7 @@ Because props are immutable by the Component itself, the parent must provide the
  
  ---
  
- [^1] With Component state, we consider this internal functionality. In theory, we can access and even edit state outside of the instance but this is an anti-pattern. Accesses a Component's state from outside injects a lot of fragility into the system (pathing dependency, changing of internal values, etc.). Only a Component instance should `setState()` on itself. 
+ [^1] With Component state, we consider this internal functionality. In theory, we can access and even edit state outside of the instance but this is an anti-pattern. Accessing a Component's state from outside injects a lot of fragility into the system (pathing dependency, changing of internal values, etc.). Only a Component instance should `setState()` on itself. 
  
  [^2] Even though moving `props` to `state` [is considered an anti-pattern](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html) there are a few use cases. The most common is having a `defaultValue` prop that becomes the internal `value` in state. We see this pattern with most Form elements in React. Although, there is a strong movement to get away from this and work with only [Controlled Components](https://facebook.github.io/react/docs/forms.html#controlled-components).
  

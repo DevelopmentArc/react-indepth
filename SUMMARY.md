@@ -18,7 +18,6 @@
        * [Post-Render with componentDidUpdate()](life_cycle/update/postrender_with_componentdidupdate.md)
    * [Death/Unmount In-depth](life_cycle/death_unmounting_indepth.md)
    * [The Life Cycle Recap](life_cycle/the_life_cycle_recap.md)
-* [Development Patterns](patterns/development_patterns.md)
-   * Item Renders
+* [Using the Item Renderer Pattern](patterns/item_renderer_intro.md)
 * [About the Authors](about_the_authors.md)
 

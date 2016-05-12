@@ -1,16 +1,19 @@
-# The Item Renderer Pattern
+# Component Composition and Renderers
  Component reuse and composability are some of the core tenants of React development. As our applications scale, development time can be dramatically reduced through this process. Yet, creating reusable Components takes planning to cover as many use cases as possible.
  
- Understanding the intention of the Compoment is the first step towards resuse. From there we can focus on how to make it more flexible for different scenarios. Once these have been defined we can now start approaching the development process. Let's look at some common examples and how we can apply a design pattern to solve them in React.
+ Understanding the intention of the Component is the first step towards reuse. From there we can focus on how to make it more flexible for different scenarios. Once these have been defined we can now start approaching the development process.
  
-## The basic List example
- A general reuse pattern is displaying a series of data in a linerar display, i.e a List. UI lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc., etc. The current demo app Todo trend is all about displaying a list of items. The lowly drop-down displays a list of selectable options. It's so common, most of us take lists for granted.
+## The evolution of a List Component
+ A general reuse pattern is displaying a series of data in a linear display, i.e a List. UI lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly drop-down displays a list of select-able options. It's so common, most of us take lists for granted.
  
- So, when we start building our application how should we approach list and potentially other reusable layouts? Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For example, we are building a list of profiles. Each profile has an avatar/headshot and some descriptive text.
+ So, when we start building our application how should we approach creating lists and potentially other reusable layouts? Let's walk through a possible progression of a list feature.
+ 
+### The first pass
+ Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of user profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
  
 ![A simple profile](react-indepth-avatar-list.png)
 
-The first approach would be to create a Component that takes an Array of Objects that have the image path and the description text. Our Component would then loop over this Array and render out each element, maybe using `<li>` items.
+The first approach would be to create a Component that takes an Array of Objects, which has an image path and the description text. Our Component would then loop over this Array and render out each element, using `<li>` items.
 
 ```javascript
 import React from 'react';
@@ -38,4 +41,4 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
-We would then apply styling to the `<ul>`, `<li>`
+We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs.

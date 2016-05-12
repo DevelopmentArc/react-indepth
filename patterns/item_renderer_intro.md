@@ -98,7 +98,7 @@ export default class Profile extends React.Component {
 }
 ```
 
- Here we have broken out the optional details rendering into a new Component called `Profile`. We can then update our List.
+ Here we have broken out the optional details rendering into a new Component called `Profile`[^1]. We can then update our List code:
 
  **List.js**
 
@@ -120,6 +120,10 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
- Now our list simply maps the profile data and sends it to the `Profile` Component for rendering.
+ Now our list maps the profile data and sends it to the `Profile` Component for rendering.
  
- Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope.
+---
+
+[^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.
+ 
+ 

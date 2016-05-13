@@ -146,7 +146,7 @@ class List extends React.Component {
   render() {
     return (
       <ul>
-        { this.props.items.map( (item) => this.props.itemRenderer(item, index) ) }
+        { this.props.items.map( (item, index) => this.props.itemRenderer(item, index) ) }
       </ul>
     );
   }
@@ -175,11 +175,11 @@ let postsData = [ ... ] // psuedo code, this has all our post data
 
 class App extends React.Component {
   renderProfile(profile, key) {
-    return (<Profile {...profile} />);
+    return (<Profile {...profile} key={ key } />);
   }
   
   renderPosts(posts, key) {
-    return (<Posts {...post} />);
+    return (<Posts {...post} key={ key } />);
   }
   
   render() {

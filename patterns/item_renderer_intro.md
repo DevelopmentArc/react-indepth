@@ -146,7 +146,7 @@ class List extends React.Component {
   render() {
     return (
       <ul>
-        { this.props.items.map( (item) => this.props.itemRenderer(item) ) }
+        { this.props.items.map( (item) => this.props.itemRenderer(item, index) ) }
       </ul>
     );
   }

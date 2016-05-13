@@ -216,7 +216,7 @@ If we don't set a key when generating children dynamically (via our itemRenderer
 
 > Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `List`. See https://fb.me/react-warning-keys for more information.
 
-The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It maybe better to use an unique `id` that's defined on the data set, or generating a hash code or some other unique identifer.
+The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It maybe better to use an unique `id` that's defined on the data set, or generating a hash code or some other unique identifier.
 
 By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data. It just needs to reorder the elements.
 

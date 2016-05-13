@@ -136,7 +136,7 @@ export default List;
  A better way to solve this is through configuration. We can expose a prop on the List component that handles rendering each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
  
 #### Function Item Renderer
- The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that requires a function.
+ The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that requires a function and changing our profiles `prop` to items.
  
 **List.js**
 ```javascript
@@ -160,7 +160,7 @@ List.defaultProps = { items: [] };
 export default List;
 ```
 
-We have added a `propTypes` configuration to require the `itemRenderer` prop which needs to be a function. Then in our `render()` we now call the function passing in the profile instance. In our parent Component or App we now do the following:
+We have added a `propTypes` configuration to require the `itemRenderer` prop which needs to be a function. We also added a items, which replaces `profiles`. Then in our `render()` we now call the function passing in the item instance data and the index. We will talk more about why we need to pass index in a bit. In our parent Component or App we now do the following:
 
 **index.js**
 ```javascript
@@ -194,6 +194,31 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('mount-point'));
 ```
+
+In `index.js` we render out two different list components. For the first, we pass in our profile data and our `renderProfile` method reference. Just like any React action (such as `onClick`) we pass the method reference and do not actually call the method. For the second, we pass in the posts data and the `renderPosts` method reference.
+
+When the lists render, the `map` method calls either `renderProfile()` or `renderPosts()` with the data and the index. 
+
+#### React keys and arrays of components
+ The reason we pass index is that we need to generate a unique key for each item in the list. When we offload rendering to a method, we no longer get React's built in ability to generate the keys for us.
+
+ React Component keys are used for Component Reconciliation. 
+ 
+> Reconciliation is the process by which React updates the DOM with each new render pass...
+> 
+> ... The situation gets more complicated when the children are shuffled around (as in search results) or if new components are added onto the front of the list (as in streams). In these cases where the identity and state of each child must be maintained across render passes, you can uniquely identify each child by assigning it a key
+>
+> When React reconciles the keyed children, it will ensure that any child with key will be reordered (instead of clobbered) or destroyed (instead of reused).
+> 
+> -- [React Child Reconciliation](https://facebook.github.io/react/docs/multiple-components.html#child-reconciliation) 
+
+If we don't set a key when generating children dynamically (via our itemRenderer method) we would get the following warning:
+
+> Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `List`. See https://fb.me/react-warning-keys for more information.
+
+The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It maybe better to use an unique `id` that's defined on the data set, or generating a hash code or some other unique identifer.
+
+By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data. It just needs to reorder the elements.
 
 #### Component Item Renderer
  

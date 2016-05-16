@@ -221,7 +221,62 @@ The quick solution is to pass in the index of the data, but this may not the ide
 By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data. It just needs to reorder the elements.
 
 #### Component Item Renderer
+ Another option for handling dynamic renderers, is to use a Component Class reference. This process is similar to passing in a function. Instead of offloading the rendering to the return value of a method we create a React Element and pass in the configuration.
  
+ **List.js**
+```javascript
+import React from 'react';
+import Profile from './Profile';
+
+class List extends React.Component {
+  render() {
+    return (
+      <ul>
+        { this.props.profile.map( (profile, index) => {
+            let newProps = Object.assign({ key: index }, profile);
+            return React.createElement(this.props.itemRenderer, newProps);
+        }) }
+      </ul>
+    );
+  }
+}
+
+List.propTypes = { itemRenderer: React.PropTypes.func };
+List.defaultProps = { profile: [], itemRenderer: Profile };
+export default List; 
+```
+ 
+ In this new version of the List Component, we create a new React Element using the `this.props.itemRenderer` as the Component Class type. We generate a `newProps` object that adds the `key` to the profile data and pass this to the Element as its `props`.
+ 
+ Because we define a default item renderer of `Profile` in the `defaultProps` we can update `propTypes` to make `itemRenderer` an optional param. To use this version of the List our index.js now looks like this:
+ 
+**index.js**
+ ```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import List from './components/List';
+import Profile from './components/Profile';
+import Posts from './components/Posts';
+
+let profileData = [ ... ] // psuedo code, this has all our profile data
+let postsData = [ ... ] // psuedo code, this has all our post data
+
+class App extends React.Component { 
+  render() {
+    return (
+      <div>
+        <List items={ profileData } />
+        <List items={ postsData } itemRenderer={ Posts } />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('mount-point'));
+```
+
+Since we have a default, the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
+
 ---
 
 [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.

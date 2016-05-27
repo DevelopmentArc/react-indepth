@@ -17,14 +17,14 @@ We will start with a naive approach to building a List Component and then walk t
 ## The evolution of a List Component
  Lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly drop-down displays a list of select-able options. It's so common, most of us take lists for granted.
  
- So, when we start building our application how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
+ When we start building our application how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
  
 ### The first pass
- Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of user profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
+ Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of customer profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
  
 ![A simple profile](react-indepth-avatar-list.png)
 
-The first step would be to create a Component that takes an Array of Objects, which has an image path and the description text. Our Component would then loop over this Array and render out each element, using `<li>` items.
+The first step would be to create a Component that takes an Array of Objects, which has an image path and the description text. Our Component will loop over this Array and render out each element, using `<li>` items.
 
 ```javascript
 import React from 'react';
@@ -52,20 +52,20 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
-We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs. This Component is a simple way of rendering out our content. It meets are design needs but isn't reusable.
+We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs. This Component is a simple way of rendering out our content. It does meet are design needs but isn't reusable.
 
 ### Requirements change
- As with any project, needs change. For our example, our customers now want to list more details about each user. The design team comes up with a new layout and we now have to support optional fields.
+ As with any project, needs change. For our example, the users now want to list more details about each customer. The design team comes up with a new layout and we now have to support optional fields.
  
  ![Optional Details](react-indepth-details-list.png)
  
- With this new design we now need to do our first bit of Component refactoring. To support the new optional detail fields we need to add logic to our Profile rendering. A good development practice is to keep our React Components as compartmentalized as possible. This enables a few different benefits.
+ With this new design we now need to do our first bit of Component refactoring. To support the new optional detail fields we need to add logic to our Profile rendering. A good development practice is to keep our React Components as compartmentalized as possible. This enables multiple benefits.
  
- The first is reducing cognitive load. Having smaller, single focused Components means they are easier to read and understand their intentions. A common experience we have all had as developers is returning to our own code six or more months later. Because we wrote it, we *should* understand it, but often it takes a bit of time to put ourselves back into mindset of what the code is solving. If the Component has hundreds of lines of logic, it will take that much more time to grok what the intention is. Event harder is doing this with another developers code.
+ The first is reducing cognitive load. Having smaller, single focused Components means they are easier to read and understand their intention. A common experience we have all had as developers is returning to our own code six or more months later. Because we wrote it, we *should* understand it, but often it takes a bit of time to put ourselves back into mindset of what the code is solving. If the Component has hundreds of lines of logic, it will take that much more time to grok what the intention is. Event harder is doing this with another developers work.
  
  One of the beautiful features of React is that we can (and should) break our Components into small bite-sized chunks. Because it is so easy in React, this helps us make our code easier to understand. At the same time, this leads to the second benefit: faster reusability.
  
- If we break out a Component to a single task, such as rendering a Profile, we now have the potential to reuse it. It is possible that elsewhere in the app we need to show a single Profile. With our current implementation, this is not easily done because the rendering of the list item is handled in the list itself. Let's break it out into a new Component and refactor our List a bit.
+ If we break out a Component to a single task, such as rendering a single profile, we now have the potential to reuse it. It is possible that elsewhere in the app we need to show a profile. With our current implementation, this is not easily done. This is because the rendering of the profile details is handled by the List component. Let's break the profile details out into a new Component and refactor our List a bit.
  
 ### Creating a Profile Component
  The first step is to move the render code from the List into it's own Component.
@@ -75,7 +75,6 @@ We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet o
 import React from 'react';
 
 export default class Profile extends React.Component {
-
   renderDetails(key, label){
     if (this.props[key]) {
       return (<div className="detail">{ label } { this.props[key] }</div>);
@@ -120,13 +119,13 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
- Now our list maps the profile data and sends it to the `Profile` Component for rendering. By isolating the rendering of the profile to a single component we have a clear [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns). Not only do we get the benefit of SoC we also make each Component a lot easier to understand. When we have to return to this code six months later, it will be a lot faster to get caught back up.
+ Now our List maps the profile data and sends it to the `Profile` Component for rendering. By isolating the rendering of the profile to a single component we have a clear [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns). Not only do we get the benefit of SoC we also make each Component a lot easier to understand. When we have to return to this code six months later, it will be a lot faster to get caught back up.
  
 ## Rendering different content
- By moving our UI rendering of each Profile to a Component, we have separated layout and content display. The List is responsible for layout and content management. The Profile is responsible for UI rendering for each individual item. Because of this first step, we can move it one step further and make our List even more flexible.
+ By moving our UI rendering of each Profile to a Component, we have separated layout and content display. The List is responsible for layout and data management. The Profile is responsible for UI rendering for each individual item. Because of this first step, we can move it one step further and make our List even more flexible.
  
 ### List Feature expansion
- Continuing our List example, let's image that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our customers request that we enable the ability to manage a different kind of content. They now want to manage Posts. 
+ Continuing our customer example, let's image that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our users request that we enable the ability to manage a different kind of content. They now want to manage Posts. 
  
  These Posts have some similar UI elements as our profile: images, descriptions, and details. But the layout and content vary drastically. We still need all the of the functionality of the list, pagination, filtering, etc. The question becomes, how do we handle this?
  
@@ -136,7 +135,7 @@ export default List;
  A better way to solve this is through configuration. We can expose a prop on the List component that handles rendering each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
  
 #### Function Item Renderer
- The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that requires a function and changing our profiles `prop` to items.
+ The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that is a function and changing our profiles `prop` to items.
  
 **List.js**
 ```javascript
@@ -160,7 +159,7 @@ List.defaultProps = { items: [] };
 export default List;
 ```
 
-We have added a `propTypes` configuration to require the `itemRenderer` prop which needs to be a function. We also added a items, which replaces `profiles`. Then in our `render()` we now call the function passing in the item instance data and the index. We will talk more about why we need to pass index in a bit. In our parent Component or App we now do the following:
+We have added a `propTypes` configuration to require the `itemRenderer` prop which needs to be a function. We also added an items `prop`, which replaces `profiles`. In our `render()` we now call the function passing in the item instance data and the index. We will talk more about why we need to pass `index` in a bit. In our parent Component or App we now do the following:
 
 **index.js**
 ```javascript
@@ -195,9 +194,9 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('mount-point'));
 ```
 
-In `index.js` we render out two different list components. For the first, we pass in our profile data and our `renderProfile` method reference. Just like any React action (such as `onClick`) we pass the method reference and do not actually call the method. For the second, we pass in the posts data and the `renderPosts` method reference.
+In `index.js` we render out two different List components. For the first, we pass in our profile data and our `renderProfile` method reference. Just like any React action (such as `onClick`) we pass the method reference and do not actually call the method. For the second, we pass in the posts data and the `renderPosts` method reference.
 
-When the lists render, the `map` method calls either `renderProfile()` or `renderPosts()` with the data and the index. 
+When the Lists render, the `map` method calls either `renderProfile()` or `renderPosts()` with each data element and the current index. 
 
 #### React keys and arrays of components
  The reason we pass index is that we need to generate a unique key for each item in the list. When we offload rendering to a method, we no longer get React's built in ability to generate the keys for us.
@@ -216,9 +215,9 @@ If we don't set a key when generating children dynamically (via our itemRenderer
 
 > Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `List`. See https://fb.me/react-warning-keys for more information.
 
-The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It maybe better to use an unique `id` that's defined on the data set, or generating a hash code or some other unique identifier.
+The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It may be better to use an unique `id` that's defined on the data set. Another option is generating a hash code or some other unique identifier that reflects the data element.
 
-By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data. It just needs to reorder the elements.
+By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data element. It just needs to reorder the elements.
 
 #### Component Item Renderer
  Another option for handling dynamic renderers, is to use a Component Class reference. This process is similar to passing in a function. Instead of offloading the rendering to the return value of a method we create a React Element and pass in the configuration.
@@ -256,7 +255,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import List from './components/List';
 import Profile from './components/Profile';
-import Posts from './components/Posts';
+import Post from './components/Post';
 
 let profileData = [ ... ] // psuedo code, this has all our profile data
 let postsData = [ ... ] // psuedo code, this has all our post data
@@ -266,7 +265,7 @@ class App extends React.Component {
     return (
       <div>
         <List items={ profileData } />
-        <List items={ postsData } itemRenderer={ Posts } />
+        <List items={ postsData } itemRenderer={ Post } />
       </div>
     );
   }
@@ -275,7 +274,14 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('mount-point'));
 ```
 
-Since we have a default, the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
+Since we have a default item renderer (the Profile Component), the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
+
+When our List renders the data it now creates a React Element from the the `itemRenderer` value and passes in the current data element. At DevelopmentArc, we have found using a React Class is a much cleaner approach to developing replaceable UI elements.
+
+## Higher Order Components
+ The last Component composition pattern we will examine in this section is called Higher Order Compoments (HOC). As [Dan Ambrov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components where first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775). The core idea of HOC is to define a function that you pass a one or more Components to. This function generates and returns a new Component which is a wrapper around the passed Component(s).
+ 
+ The need for HOC came about with React's movement to ES6 classes and the lack of mixin support with the new Class syntax. To handle this choice, a new pattern needed to be defined to support tying into the Component Life Cycle and handling adding reusable code in a elegant way.
 
 ---
 

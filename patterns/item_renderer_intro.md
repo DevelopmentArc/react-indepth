@@ -281,7 +281,7 @@ When our List renders the data it now creates a React Element from the the `item
 ## Higher Order Components
  The last Component composition pattern we will examine in this section is called Higher Order Compoments (HOC). As [Dan Ambrov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components where first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775). The core idea of HOC is to define a function that you pass a one or more Components to. This function generates and returns a new Component which is a wrapper around the passed Component(s).
  
- The need for HOC came about with React's movement to ES6 classes and the lack of mixin support with the new Class syntax. To handle this choice, a new pattern needed to be defined to support tying into the Component Life Cycle and handling adding reusable code in a elegant way.
+ The need for HOC came about with React's movement to ES6 classes and the lack of mixin support with the new Class syntax. To handle this choice, a new pattern needed to be defined to support tying into the [Component Life Cycle](/life_cycle/introduction.md) and handling adding reusable code in a elegant way.
 
 ---
 

@@ -1,17 +1,17 @@
 # Rendering different content
- By moving our UI rendering of each Profile to a Component, we have separated layout and content display. The List is responsible for layout and data management. The Profile is responsible for UI rendering for each individual item. Because of this first step, we can move it one step further and make our List even more flexible.
+ By moving our UI rendering of each Profile to a Component, we have separated layout and content display. The List is responsible for layout and data management. The Profile is responsible for UI rendering for each individual item. Because of this first step, we can move one step further and make our List even more flexible.
  
-### List Feature expansion
- Continuing our customer example, let's image that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our users request that we enable the ability to manage a different kind of content. They now want to manage Posts. 
+## List Feature expansion
+ Continuing our customer example, let's image that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our users request the ability to manage a different kind of content. They now want to manage Posts. 
  
- These Posts have some similar UI elements as our profile: images, descriptions, and details. But the layout and content vary drastically. We still need all the of the functionality of the list, pagination, filtering, etc. The question becomes, how do we handle this?
+ These Posts have some similar UI elements as our profile: images, descriptions, and details. But the layout and content vary drastically. We still need all the of the functionality of the List; pagination, filtering, etc. The question becomes, how do we handle this?
  
-### Item Rendering
- A simple approach would be to add a switch in our List's `map` method. The switch checks the data type and then choose to use the Profile Component or the Post Component. But, this approach adds a pretty bad [code smell](https://en.wikipedia.org/wiki/Code_smell). Similar to our first draft of the List, it meets our immediate needs but what happens when we need a Message List? Soon our List has a lot of switches.
+## Item Rendering
+ A simple, but not ideal, approach would be to add a switch in our List's `map` method. The switch checks the data type and then choose to use the Profile Component or the Post Component. But, this approach adds a pretty bad [code smell](https://en.wikipedia.org/wiki/Code_smell). Similar to our first draft of the List, it meets our immediate needs but what happens when we need a Message List? Or Viewer List? Soon our List has a lot of switches.
  
- A better way to solve this is through configuration. We can expose a prop on the List component that handles rendering each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
+ A better way to solve this is through configuration. We can expose a prop on the List component that handles rendering of each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
  
-#### Function Item Renderer
+### Function Item Renderer
  The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that is a function and changing our profiles `prop` to items.
  
 **List.js**
@@ -36,7 +36,7 @@ List.defaultProps = { items: [] };
 export default List;
 ```
 
-We have added a `propTypes` configuration to require the `itemRenderer` prop which needs to be a function. We also added an items `prop`, which replaces `profiles`. In our `render()` we now call the function passing in the item instance data and the index. We will talk more about why we need to pass `index` in a bit. In our parent Component or App we now do the following:
+We have added a `propTypes` configuration to require the `itemRenderer` prop, which needs to be a function. We also added an items `prop`, which replaces `profiles`. In our `render()` we now call the function passing in the item instance data and the index. We will talk more about why we need to pass `index` in a bit. In our parent Component or App we now do the following:
 
 **index.js**
 ```javascript
@@ -71,14 +71,14 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('mount-point'));
 ```
 
-In `index.js` we render out two different List components. For the first, we pass in our profile data and our `renderProfile` method reference. Just like any React action (such as `onClick`) we pass the method reference and do not actually call the method. For the second, we pass in the posts data and the `renderPosts` method reference.
+In `index.js` we render out two different List components. For the first List, we pass in our profile data and our `renderProfile` method reference. Just like any React action (such as `onClick`) we pass the method reference and do not actually call the method. For the second, we pass in the posts data and the `renderPosts` method reference.
 
 When the Lists render, the `map` method calls either `renderProfile()` or `renderPosts()` with each data element and the current index. 
 
-#### React keys and arrays of components
+### React keys and arrays of components
  The reason we pass index is that we need to generate a unique key for each item in the list. When we offload rendering to a method, we no longer get React's built in ability to generate the keys for us.
 
- React Component keys are used for Component Reconciliation. 
+ React Component keys are used for Component Reconciliation: 
  
 > Reconciliation is the process by which React updates the DOM with each new render pass...
 > 
@@ -88,16 +88,16 @@ When the Lists render, the `map` method calls either `renderProfile()` or `rende
 > 
 > -- [React Child Reconciliation](https://facebook.github.io/react/docs/multiple-components.html#child-reconciliation) 
 
-If we don't set a key when generating children dynamically (via our itemRenderer method) we would get the following warning:
+If we don't set a key when generating children dynamically (via our `itemRenderer` method) we would get the following warning:
 
 > Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `List`. See https://fb.me/react-warning-keys for more information.
 
-The quick solution is to pass in the index of the data, but this may not the ideal solution. This generates a key based on item order. It may be better to use an unique `id` that's defined on the data set. Another option is generating a hash code or some other unique identifier that reflects the data element.
+The quick solution is to pass in the index of the data, but this may not be the ideal solution. The problem with this approach is that it generates a key based on item order. It would be better to use an unique `id` that's defined on the data set. Another option is generating a hash code or some other unique identifier that reflects the data element's content.
 
-By having a identifier based on the data instead of order, we can help optimization of the Component rendering. This can occur when we display partial lists, such as filtering or changing list order, such as sorting. If our key is based on the data and not order, then React knows it doesn't have to generate a new instance for the data element. It just needs to reorder the elements.
+By having a identifier based on the data content instead of order, we can help optimize the Component rendering. When we display partial lists, such as filtering or sorting, if our key is based on the content and not order, React knows it doesn't have to generate a new Element for the data. It just needs to reorder the elements.
 
-#### Component Item Renderer
- Another option for handling dynamic renderers, is to use a Component Class reference. This process is similar to passing in a function. Instead of offloading the rendering to the return value of a method we create a React Element and pass in the configuration.
+### Component Item Renderer
+ Another option for handling dynamic renderers, is to use a Component Class reference. This process is similar to passing in a function. Instead of offloading the rendering to the return value of a method we create a React Element from the Component and pass in the configuration.
  
  **List.js**
 ```javascript
@@ -122,7 +122,7 @@ List.defaultProps = { profile: [], itemRenderer: Profile };
 export default List; 
 ```
  
- In this new version of the List Component, we create a new React Element using the `this.props.itemRenderer` as the Component Class type. We generate a `newProps` object that adds the `key` to the profile data and pass this to the Element as its `props`.
+ In this version of the List Component, we create a new React Element using the `this.props.itemRenderer` as the Component Class type. We generate a `newProps` object that adds the `key` to the profile data and pass this to the Element as its `props`.
  
  Because we define a default item renderer of `Profile` in the `defaultProps` we can update `propTypes` to make `itemRenderer` an optional param. To use this version of the List our index.js now looks like this:
  
@@ -153,4 +153,4 @@ ReactDOM.render(<App />, document.getElementById('mount-point'));
 
 Since we have a default item renderer (the Profile Component), the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
 
-When our List renders the data it now creates a React Element from the the `itemRenderer` value and passes in the current data element. At [DevelopmentArc](http://developmentarc.com), we have found using a React Class is a much cleaner approach to developing replaceable UI elements.
+When our List renders the data it now creates a React Element from the `itemRenderer` value and passes in the current data element. At [DevelopmentArc](http://developmentarc.com), we have found using a React Class is a much cleaner approach to developing replaceable UI elements.

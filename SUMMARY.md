@@ -20,6 +20,6 @@
    * [The Life Cycle Recap](life_cycle/the_life_cycle_recap.md)
 * [Component Evolution and Composition](patterns/item_renderer_intro.md)
    * [The Evolution of a List Component](patterns/the_evolution_of_a_list_component.md)
-   * Rendering different content
+   * [Rendering different content](patterns/rendering_different_content.md)
 * [About the Authors](about_the_authors.md)
 

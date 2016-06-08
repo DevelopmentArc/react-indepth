@@ -279,11 +279,25 @@ Since we have a default item renderer (the Profile Component), the first version
 When our List renders the data it now creates a React Element from the the `itemRenderer` value and passes in the current data element. At DevelopmentArc, we have found using a React Class is a much cleaner approach to developing replaceable UI elements.
 
 ## Higher Order Components
- The last Component composition pattern we will examine is called *Higher Order Components* (HOC). As [Dan Ambrov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components where first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775). The core idea of HOC is to define a function, which you pass one or more Components to. This function generates and returns a new Component which is a wrapper around the passed in Component(s).
+ The last Component composition pattern we will examine in this section is *Higher Order Components* (HOC). As [Dan Ambrov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components where first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775) in a gist. The core idea of HOC is to define a function, which you pass one or more Components to. This function generates and returns a new Component which is a wrapper around the passed in Component(s).
  
- The need for HOC came about with React's movement to ES6 classes and the lack of mixin support with the new Class syntax. To handle this change, a new pattern needed to be defined to replace mixins. Typically, mixins add/override functionality around the [Component Life Cycle](../life_cycle/introduction.md) and enable sharing reusable code in a elegant way. Without mixin support HOC was created.
+ The need for HOC came about with React's move to support ES6 classes and the lack of mixin support with the new JavaScript Class syntax. To handle this change, a new pattern needed to be defined to replace mixins. Typically, mixins add/override functionality around the [Component Life Cycle](../life_cycle/introduction.md) and enable sharing reusable code in a elegant way. Without mixin support in ES6, the HOC pattern was created.
  
- We won't spend a lot of time digging into the mechanics of HOC, because Dan's article '[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.x4c12r69h)' does a fantastic job of explaining the why and how of HOC. For those of you reading this in an ebook or document format let's look at a simple example of how to create a HOC.
+ ### A form group example
+  For our HOC example, we will create a function for wrapping a Component in a custom form group with an optional `<label>` field. The goal of the HOC is to allow us to create two outputs, with and without a label:
+  
+  ```html
+  <!-- With a label -->
+  <div class="form-group">
+    <label class="form-label" for="firstName">First Name:</label>
+    <input type="text" name="firstName" />
+  </div>
+  
+  <!-- Without a label -->
+  <div class="form-group">
+    <input type="text" name="lastName" />
+  </div>
+  ```
  
  
 

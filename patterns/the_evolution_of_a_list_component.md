@@ -3,7 +3,7 @@
  
  When we start building our application how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
  
-### The first pass
+## The first pass
  Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of customer profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
  
 ** UI Wireframe #1**
@@ -40,7 +40,7 @@ export default List;
 
 We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs. This Component is a simple way of rendering out our content. It meets our design needs but isn't reusable.
 
-### Requirements change
+## Requirements change
  As with any project, needs change. For our example, the users now want to list more details about each customer. The design team comes up with a new layout and we now have to support optional fields.
  
  ** UI Wireframe #2**
@@ -55,7 +55,7 @@ We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet o
  
  If we break out a Component to a single task, such as rendering a single profile, we now have the potential to reuse it. It is possible that elsewhere in the app we need to show a profile. With our current implementation, this is not easily done. This is because the rendering of the profile details is handled internally by the List component. Let's break the profile details out into a new Component and refactor our List a bit.
  
-### Creating a Profile Component
+## Creating a Profile Component
  The first step is to move the render code from the List into it's own Component.
  
  **Profile.js**

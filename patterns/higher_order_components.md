@@ -62,6 +62,8 @@ function formGroupBuilder(Component, config) {
 export default formGroupBuilder;
 ```
 
+To use this HOC we can do the following:
+
 **index.js**
 ```javascript
 import React from 'react';
@@ -81,7 +83,7 @@ let MyComponent = React.createClass({
 ReactDOM.render(<MyComponent />, document.getElementById('mount-point'));
 ```
 
-Let's examine the above code. The first thing we do is create a function called `formGroupBuilder` which takes two arguments: `Component` and `config`.
+Let's examine the above code. The first thing we do for the HOC is create a function called `formGroupBuilder` which takes two arguments: `Component` and `config`.
 
 ```javascript
 function formGroupBuilder(Component, config) {
@@ -91,7 +93,7 @@ function formGroupBuilder(Component, config) {
 export default formGroupBuilder;
 ```
 
-The Component will be the instance we want to wrap in our form group. In function, we create a new React Component and then generate/return an Element instance of the component using the config as props.
+The Component will be the instance we want to wrap in our form group. In the function, we create a new React Component and then return an Element instance using the config as props.
 
 ```javascript
 const FormGroup = React.createClass({
@@ -101,7 +103,7 @@ const FormGroup = React.createClass({
 return(<FormGroup { ...config } />);
 ```
 
-We take advantage of the [ES6 spred operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to pass in our config object to the generated JSX Element. In our `render()` method we create the form group `<div>` and then render out our optional label and Comoponent content.
+We take advantage of the [ES6 spred operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to pass in our `config` object as the props for the generated JSX Element. In our `render()` method we create the form group `<div>` and then render out our optional label and Component content.
 
 ```javascript
 render() {
@@ -114,7 +116,7 @@ render() {
 }
 ```
 
-Our `__renderLabel()` method[^2] we use the [Lodash `isString`](https://lodash.com/docs#isString) method to check if the label value is a string. If so we render out our label DOM element, otherwise we return `null`.
+In our `__renderLabel()` method[^1] we use the [Lodash `isString`](https://lodash.com/docs#isString) method to check if the label value is a string. If so, we render out our label DOM element, otherwise we return `null`.
 
 ```javascript
 __renderLabel() {
@@ -131,7 +133,7 @@ __renderLabel() {
 
 Because `null` does not render out to the Native UI in React, this is how we make the `<label>` optional based on the passed value. 
 
-Finally, we had to add a check to determine what was passed to our HOC function for the Component. This is an important check because we want to support React Components and Elements. 
+Finally, we had to add a check to determine what type was passed to our HOC function for the Component. This is an important check because we want to support both React Components and Elements. 
 
 In our `index.js` we are passing in:
 
@@ -156,11 +158,13 @@ __renderElement() {
 },
 ```
 
-This HOC example is just the tip of the iceberg when it comes to self-generating wrapper components. We can tap into the [Component Life Cycle methods](../life_cycle/introduction.md), we can make more complex deciscions based on the data, we can register to stores or other events, and many other possible combinations.
+If the Component instance is an element, we [clone the element](https://facebook.github.io/react/docs/top-level-api.html#react.cloneelement) and pass on the new props. Otherwise, we generate a new Element using JSX and the passed in React Component.
 
-For more indepth examples we highly recommend reading Dan Abramov's *[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.9y0gg1ix5)* and @franlplant's *[React Higher Order Components in depth](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d38rbnsu8)* 
+This HOC example is just the tip of the iceberg when it comes to self-generating wrapper components. Using this pattern, We can tap into the [Component Life Cycle methods](../life_cycle/introduction.md), we can make more complex decisions based on the data, we can register to stores or other events, and many other possible combinations.
+
+For more in-depth examples we highly recommend reading Dan Abramov's *[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.9y0gg1ix5)* and @franlplant's *[React Higher Order Components in depth](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d38rbnsu8)* 
 
 ---
 
-[^2] In these examples we are prefixing our methods with `__` to reflect that these are internal component methods. This is completly optional and is just our preffered style syntax.
+[^1] In these examples we are prefixing our methods with `__` to reflect that these are internal component methods. This is completely optional and is just our preferred style syntax.
 

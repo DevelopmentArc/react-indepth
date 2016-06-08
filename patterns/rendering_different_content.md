@@ -154,5 +154,3 @@ ReactDOM.render(<App />, document.getElementById('mount-point'));
 Since we have a default item renderer (the Profile Component), the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
 
 When our List renders the data it now creates a React Element from the `itemRenderer` value and passes in the current data element. At [DevelopmentArc](http://developmentarc.com), we have found using a React Class is a much cleaner approach to developing replaceable UI elements.
-
- ***Next Up***: [Higher Order Components](higher_order_components.md)

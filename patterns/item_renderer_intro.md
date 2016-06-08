@@ -342,6 +342,25 @@ function formGroupBuilder(Component, config) {
 export default formGroupBuilder;
 ```
 
+**index.js**
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import formGroup from './higherOrderComponents/formGroup';
+
+let MyComponent = React.createClass({
+  render() {
+    return (
+      <div>
+        { formGroup(<input type="text" />, { label: 'First Name:', name: 'firstName' }) }
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(<MyComponent />, document.getElementById('mount-point'));
+```
+
 Let's examine the above code. The first thing we do is create a function called `formGroupBuilder` which takes two arguments: `Component` and `config`.
 
 ```javascript
@@ -390,9 +409,21 @@ __renderLabel() {
 },
 ```
 
-Because `null` does not render out to the Native UI in React, this is how we make the `<label>` optional based on the passed value. Finally, we had to add a check to determine what was passed to our HOC function for the Component.
+Because `null` does not render out to the Native UI in React, this is how we make the `<label>` optional based on the passed value. 
 
-This is an important check because we need to 
+Finally, we had to add a check to determine what was passed to our HOC function for the Component. This is an important check because we want to support React Components and Elements. 
+
+In our `index.js` we are passing in:
+
+```javascript
+formGroup(<input type="text" />, { label: 'First Name:', name: 'firstName' })
+```
+
+Because we are using JSX to generate our `<input />` the HOC will receive an Element. But, if we used our Profile component, we may not want to use JSX:
+
+```javascript
+formGroup(Profile, { label: 'First Name:', name: 'firstName' })
+```
 
 ---
 

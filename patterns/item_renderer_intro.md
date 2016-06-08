@@ -425,6 +425,17 @@ Because we are using JSX to generate our `<input />` the HOC will receive an Ele
 formGroup(Profile, { label: 'First Name:', name: 'firstName' })
 ```
 
+To support both options and pass on the `props`, we use the `__renderElement()` method to handle the inspection and output generation:
+
+```javascript
+__renderElement() {
+  // We need to see if we passed a Component or an Element
+  // such as Profile vs. <input type="text" />
+  if (React.isValidElement(Component)) return React.cloneElement(Component, this.props);
+  return( <Component { ...this.props } />);
+},
+```
+
 ---
 
 [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.

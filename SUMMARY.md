@@ -19,5 +19,6 @@
    * [Death/Unmount In-depth](life_cycle/death_unmounting_indepth.md)
    * [The Life Cycle Recap](life_cycle/the_life_cycle_recap.md)
 * [Component Evolution and Composition](patterns/item_renderer_intro.md)
+  * The Evolution of a List Component
 * [About the Authors](about_the_authors.md)
 

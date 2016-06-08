@@ -352,6 +352,16 @@ function formGroupBuilder(Component, config) {
 export default formGroupBuilder;
 ```
 
+The Component will be the instance we want to wrap in our form group. In function, we create a new React Component and then generate/return an Element instance of the component using the config as props.
+
+```javascript
+const FormGroup = React.createClass({
+  ...
+});
+
+return(<FormGroup { ...config } />);
+```
+
 ---
 
 [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.

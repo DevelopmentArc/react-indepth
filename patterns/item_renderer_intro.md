@@ -322,8 +322,8 @@ function formGroupBuilder(Component, config) {
     __renderElement() {
       // We need to see if we passed a Component or an Element
       // such as Profile vs. <input type="text" />
-      if (React.isValidElement(Component)) return React.cloneElement(Component, props);
-      return( <Component { ...props } />);
+      if (React.isValidElement(Component)) return React.cloneElement(Component, this.props);
+      return( <Component { ...this.props } />);
     },
 
     render() {

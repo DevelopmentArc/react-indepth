@@ -299,7 +299,58 @@ When our List renders the data it now creates a React Element from the the `item
   </div>
   ```
  
+ Because this could become a common task, we can use the HOC pattern to generate our form group wrapper and let it decide if it should inject the label or not.
  
+ **formGroup.js**
+```javascript
+import React from 'react';
+import { isString } from 'lodash';
+
+function formGroupBuilder(Component, config) {
+  const FormGroup = React.createClass({
+    __renderLabel() {
+      // check if the passed value is a string using Lodash#isString
+      if (isString(this.props.label)) {
+        return(
+          <label className="form-label" htmlFor={ this.props.name }>
+            { this.props.label }
+          </label>
+        );
+      }
+    },
+
+    __renderElement() {
+      // We need to see if we passed a Component or an Element
+      // such as Profile vs. <input type="text" />
+      if (React.isValidElement(Component)) return React.cloneElement(Component, config);
+      return React.createElement(Component, config);
+    },
+
+    render() {
+      return(
+        <div className="form-group">
+          { this.__renderLabel() }
+          { this.__renderElement() }
+        </div>
+      );
+    }
+  });
+
+  return(<FormGroup { ...config } />);
+}
+
+export default formGroupBuilder;
+```
+
+Let's examine the above code. The first thing we do is create a function called `formGroupBuilder` which takes two arguments: `Component` and `config`.
+
+```javascript
+function formGroupBuilder(Component, config) {
+  ...
+}
+
+export default formGroupBuilder;
+```
 
 ---
 

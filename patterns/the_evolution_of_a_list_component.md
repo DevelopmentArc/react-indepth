@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
 }
 ```
 
- Here we have broken out the optional details rendering into a new Component called `Profile`[^1]. Profile's job is to render out the base layout and then render out our optional details, depeneding of if they are defined or not. We can then update our List code:
+ Here we have broken out the optional details rendering into a new Component called `Profile`. Profile's job is to render out the base layout and then render out our optional details, depending of if they are defined or not[^1]. We can then update our List code:
 
  **List.js**
 

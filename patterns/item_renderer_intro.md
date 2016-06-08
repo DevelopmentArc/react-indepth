@@ -322,8 +322,8 @@ function formGroupBuilder(Component, config) {
     __renderElement() {
       // We need to see if we passed a Component or an Element
       // such as Profile vs. <input type="text" />
-      if (React.isValidElement(Component)) return React.cloneElement(Component, config);
-      return React.createElement(Component, config);
+      if (React.isValidElement(Component)) return React.cloneElement(Component, props);
+      return( <Component { ...props } />);
     },
 
     render() {
@@ -362,8 +362,42 @@ const FormGroup = React.createClass({
 return(<FormGroup { ...config } />);
 ```
 
+We take advantage of the [ES6 spred operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to pass in our config object to the generated JSX Element. In our `render()` method we create the form group `<div>` and then render out our optional label and Comoponent content.
+
+```javascript
+render() {
+  return(
+    <div className="form-group">
+      { this.__renderLabel() }
+      { this.__renderElement() }
+    </div>
+  );
+}
+```
+
+Our `__renderLabel()` method[^2] we use the [Lodash `isString`](https://lodash.com/docs#isString) method to check if the label value is a string. If so we render out our label DOM element, otherwise we return `null`.
+
+```javascript
+__renderLabel() {
+  // check if the passed value is a string using Lodash#isString
+  if (isString(this.props.label)) {
+    return(
+      <label className="form-label" htmlFor={ this.props.name }>
+        { this.props.label }
+      </label>
+    );
+  }
+},
+```
+
+Because `null` does not render out to the Native UI in React, this is how we make the `<label>` optional based on the passed value. Finally, we had to add a check to determine what was passed to our HOC function for the Component.
+
+This is an important check because we need to 
+
 ---
 
 [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.
+
+[^2] In these examples we are prefixing our methods with `__` to reflect that these are internal component methods. This is completly optional and is just our preffered style syntax.
  
  

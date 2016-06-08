@@ -436,6 +436,10 @@ __renderElement() {
 },
 ```
 
+This HOC example is just the tip of the iceberg when it comes to self-generating wrapper components. We can tap into the [Component Life Cycle methods](../life_cycle/introduction.md), we can make more complex deciscions based on the data, we can register to stores or other events, and many other possible combinations.
+
+For more indepth examples we highly recommend reading Dan Abramov's *[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.9y0gg1ix5)* and @franlplant's *[React Higher Order Components in depth](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d38rbnsu8)* 
+
 ---
 
 [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.

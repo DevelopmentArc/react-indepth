@@ -21,6 +21,6 @@
 * [Component Evolution and Composition](patterns/item_renderer_intro.md)
    * [The Evolution of a List Component](patterns/the_evolution_of_a_list_component.md)
    * [Rendering different content](patterns/rendering_different_content.md)
-   * Higher Order Components
+   * [Higher Order Components](patterns/higher_order_components.md)
 * [About the Authors](about_the_authors.md)
 

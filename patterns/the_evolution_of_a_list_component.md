@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
 }
 ```
 
- Here we have broken out the optional details rendering into a new Component called `Profile`[^1]. We can then update our List code:
+ Here we have broken out the optional details rendering into a new Component called `Profile`[^1]. Profile's job is to render out the base layout and then render out our optional details, depeneding of if they are defined or not. We can then update our List code:
 
  **List.js**
 
@@ -107,5 +107,9 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
- Now our List maps the profile data and sends it to the `Profile` Component for rendering. By isolating the rendering of the profile to a single component we have a clear [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns). Not only do we get the benefit of SoC we also make each Component a lot easier to understand. When we have to return to this code six months later, it will be a lot faster to get caught back up.
+ Now our List maps the profile data and sends it to the `Profile` Component for rendering. By isolating the rendering of the profile to a single component we have a clear [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns). Not only do we get the benefit of SoC, we also make each Component a lot easier to understand. When we have to return to this code six months later, it will be a lot faster to get caught back up.
+ 
+ ---
+ 
+ [^1] Following this pattern we could go even further if so desired. We could break out each Profile detail into its own Component. Yet, that maybe going too far down the granularity rabbit hole. Once again, over-architecture is a slippery slope and having to make a judgment call is part of the process.
 

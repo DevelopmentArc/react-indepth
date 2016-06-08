@@ -1,11 +1,13 @@
 # The Evolution of a List Component
- Lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly HTML drop-down displays a list of selectable options. It's so common, most of us take lists for granted.
+ Lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly HTML drop-down displays a list of select-able options. It's so common, most of us take lists for granted.
  
  When we start building our application how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
  
 ### The first pass
  Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of customer profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
  
+** UI Wireframe #1**
+
 ![A simple profile](react-indepth-avatar-list.png)
 
 The first step would be to create a Component that takes an Array of Objects, which has an image path and the description text. Our Component will loop over this Array and render out each element, using `<li>` items.
@@ -36,10 +38,12 @@ List.defaultProps = { profile: [] };
 export default List;
 ```
 
-We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs. This Component is a simple way of rendering out our content. It does meet are design needs but isn't reusable.
+We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet our design needs. This Component is a simple way of rendering out our content. It meets our design needs but isn't reusable.
 
 ### Requirements change
  As with any project, needs change. For our example, the users now want to list more details about each customer. The design team comes up with a new layout and we now have to support optional fields.
+ 
+ ** UI Wireframe #2**
  
  ![Optional Details](react-indepth-details-list.png)
  

@@ -109,7 +109,7 @@ export default List;
 
  Now our List maps the profile data and sends it to the `Profile` Component for rendering. By isolating the rendering of the profile to a single component we have a clear [separation of concerns (SoC)](https://en.wikipedia.org/wiki/Separation_of_concerns). Not only do we get the benefit of SoC, we also make each Component a lot easier to understand. When we have to return to this code six months later, it will be a lot faster to get caught back up.
  
- Up Next: [Rendering Different Content](patterns/rendering_different_content.md)
+ **Up Next**: [Rendering Different Content](patterns/rendering_different_content.md)
  
  ---
  

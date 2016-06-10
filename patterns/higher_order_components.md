@@ -83,17 +83,17 @@ let MyComponent = React.createClass({
 ReactDOM.render(<MyComponent />, document.getElementById('mount-point'));
 ```
 
-Let's examine the above code. The first thing we do for the HOC is create a function called `formGroupBuilder` which takes two arguments: `Component` and `config`.
+Let's examine the above code. The first thing we do for the HOC is create a function called `formGroup` which takes two arguments: `Component` and `config`.
 
 ```javascript
-function formGroupBuilder(Component, config) {
+function formGroup(Component, config) {
   ...
 }
 
-export default formGroupBuilder;
+export default formGroup;
 ```
 
-The Component will be the instance we want to wrap in our form group. In the function, we create a new React Component and then return an Element instance using the config as props.
+The Component will be the instance we want to wrap in our form group. In the function, we create a new React Component and then return an Element instance using the `config` as props.
 
 ```javascript
 const FormGroup = React.createClass({

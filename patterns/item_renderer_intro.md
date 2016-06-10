@@ -14,4 +14,4 @@
  Because of this process, we felt it is important to walk through the evolution of a Component. 
 We will start with a naive approach to building a List Component and then walk through different refactorings to support reusablity. More then likely, we would know early on that a List should be reusable. But, walking through the evolution process can help deepen our understanding of how to enable reusablity.
  
- 
+ Up Next: [The Evolution of a List Component](patterns/the_evolution_of_a_list_component.md)

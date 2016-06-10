@@ -8,7 +8,7 @@ In the meantime, there are ton of getting started resources already available. I
 * [Awesome React](https://github.com/enaqx/awesome-react) - A comprehensive list of resources
 * [Learning React, Getting Started](https://scotch.io/tutorials/learning-react-getting-started-and-concepts) - Basic intro article
 
-From a book development perspective, our first focus will be on the [Life Cycle chapters](../life_cycle/introduction.md) and we will circle back to this section soon.
+From a book development perspective, we have first focused on the React [Life Cycle chapters](../life_cycle/introduction.md) and Component Evolution. We will circle back to this section soon.
 
 ## Guiding Principals to learning React
 Unlike most intro books, we want to have different goals for our Basics Section. We will dig into the underpinnings of React and look at how to create applications from the bottom up. We feel that understanding the internals of a UI system helps drive development choices. We plan to explore React from this guiding principal.

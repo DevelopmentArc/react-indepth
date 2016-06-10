@@ -26,7 +26,7 @@
 import React from 'react';
 import { isString } from 'lodash';
 
-function formGroupBuilder(Component, config) {
+function formGroup(Component, config) {
   const FormGroup = React.createClass({
     __renderLabel() {
       // check if the passed value is a string using Lodash#isString
@@ -59,7 +59,7 @@ function formGroupBuilder(Component, config) {
   return(<FormGroup { ...config } />);
 }
 
-export default formGroupBuilder;
+export default formGroup;
 ```
 
 To use this HOC we can do the following:

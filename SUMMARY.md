@@ -18,7 +18,7 @@
        * [Post-Render with componentDidUpdate()](life_cycle/update/postrender_with_componentdidupdate.md)
    * [Death/Unmount In-depth](life_cycle/death_unmounting_indepth.md)
    * [The Life Cycle Recap](life_cycle/the_life_cycle_recap.md)
-* [Component Evolution and Composition](patterns/item_renderer_intro.md)
+* [Component Evolution and Composition](patterns/component_evolution_and_composition.md)
    * [The Evolution of a List Component](patterns/the_evolution_of_a_list_component.md)
    * [Rendering different content](patterns/rendering_different_content.md)
    * [Higher Order Components](patterns/higher_order_components.md)

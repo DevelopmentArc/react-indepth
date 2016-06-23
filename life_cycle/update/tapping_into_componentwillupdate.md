@@ -12,7 +12,7 @@ componentWillUpdate(nextProps, nextState) {
   // we need to access nextProps here, not this.props
   if (nextProps.props.age > 70) {
     mode = 'old';
-  } else if (this.props.age < 18) {
+  } else if (nextProps.props.age < 18) {
     mode = 'young';
   } else {
     mode = 'middle';

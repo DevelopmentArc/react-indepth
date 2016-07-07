@@ -23,3 +23,9 @@ To review, the methods and order called are:
 1. `componentWillUnmount()`
 4. Children Life cycle methods
 5. Instance destroyed for Garbage Collection
+
+## Life Cycle Flowchart and `setState()` safety
+
+In addition, this flow chart by [Peter Beshai](https://twitter.com/pbesh) breaks down the different methods and also calls out when `this.setState()` is safe and NOT safe to call:
+
+![Lifecycl Flow Chart](react-lifecycle-flow-chart-states.png)

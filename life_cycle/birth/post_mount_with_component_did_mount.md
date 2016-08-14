@@ -6,7 +6,7 @@
  
  ![React Element Tree](react-element-tree.png)
 
- When we begin the Birth phase, we process initialize through `render()` in this order: 
+ When we begin the Birth phase, we process `render()` in this order: 
  
  ```
  A -> A.0 -> A.0.0 -> A.0.1 -> A.1 -> A.2.
@@ -120,7 +120,7 @@ Parent did mount.
 Child value: foo
 ```
 
-As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access it's `refs` and the GrandChild can access it's own DOM nodes. 
+As you can see, the GrandChild's `componentDidMount()` was called first, followed by Child and then Parent. Because we are now mounted on the DOM and our children are created, the Parent can access its `refs` and the GrandChild can access its own DOM nodes. 
 
 ## Useful Tasks
  The `componentDidMount()` method can be a helpful heavy lifter for our Components. One of the most common tasks is interacting with the Native UI. Unlike `componentWillMount()` or `render()` we can now fully interact with the Native stack.

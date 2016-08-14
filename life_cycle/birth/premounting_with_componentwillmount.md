@@ -42,11 +42,11 @@ export default Person;
 
 In the example above we call `this.setState()` and update our current state before render. If we need state values on calculations passed in `props`, this is where we should do the logic. 
 
-Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If your Component needs to respond to global Native UI events, such as `window` re-sizing or focus changes, this is a good place to do it[^2].
+Other uses for `componentWillMount()` includes registering to global events, such as a Flux store. If your Component needs to respond to global Native UI events, such as `window` resizing or focus changes, this is a good place to do it[^2].
 
 ***Next Up:*** [Component `render()`](component_render.md)
 
 ---
-[^1] In our example above, we are use the `classNames()` library, which was originally included as a React Addon. However, the feature has been removed from React and moved to it's [own library](https://github.com/JedWatson/classnames) for use with or without React.
+[^1] In our example above, we are using the `classNames()` library, which was originally included as a React Addon. However, the feature has been removed from React and moved to its [own library](https://github.com/JedWatson/classnames) for use with or without React.
 
 [^2] It's important to remember that many Native UI elements do not exist at this point in the life cycle. That means we need to stick to very high-level/global events such as `window` or `document`.

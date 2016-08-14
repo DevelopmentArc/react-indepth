@@ -1,8 +1,8 @@
 # Initialization & Construction
- During the initialization of the Component from the Element, the `prop`s and `state` are defined. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
+ During the initialization of the Component from the Element, the `props` and `state` are defined. How these values are defined depends on if you are using `React.createClass()` or `extend React.Component`. Let's first look at `props` and then we will examine `state`.
 
 ## Default Props
-As we mentioned earlier, the Element instance contains the current `props` that are being passed to Component instance. Most of the time, all the available `props` on the Component are not required. Yet, some times we do need to have values for all the `props` for our Component to render correctly.
+As we mentioned earlier, the Element instance contains the current `props` that are being passed to the Component instance. Most of the time, all the available `props` on the Component are not required. Yet, some times we do need to have values for all the `props` for our Component to render correctly.
 
 For example, we have a simple component that renders a name and age.
 
@@ -19,7 +19,7 @@ export default class Person extends React.Component {
 ```
 
 
-In our case, we expect two props to by passed in: `name` and `age`. If we want to make `age` optional and default to the text 'unknown' we can take advantage of React's default props. 
+In our case, we expect two props to be passed in: `name` and `age`. If we want to make `age` optional and default to the text 'unknown' we can take advantage of React's default props. 
 
 **For ES6 Class**
 ```javascript
@@ -135,7 +135,7 @@ var Person = React.createClass({
 ### State defaults
  It is important to keep in mind that if we do not define a state in the constructor/getInitialState then the state will be `undefined`. Because the state is `undefined` and not an empty Object (`{}`), if you try to query the state later on this will be an issue.
  
- In general, we want to set a default value for all our state properties. There are some edge cases where the initial value for the state property may be `null` or `undefined`. If this state happens to be only state property, it maybe tempting to skip setting a default state. But, if our code tries to access the property you will get an error.
+ In general, we want to set a default value for all our state properties. There are some edge cases where the initial value for the state property may be `null` or `undefined`. If this state happens to be only state property, it may be tempting to skip setting a default state. But, if our code tries to access the property you will get an error.
  
  ```javascript
  class Person extends React.Component {

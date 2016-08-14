@@ -1,9 +1,9 @@
 # Managing Children Components and Mounting
-Now that we have completed the first render pass, our `render()` method returns a single React Element. This Element may have children elements. Those children, may also have children. etc. etc.
+Now that we have completed the first render pass, our `render()` method returns a single React Element. This Element may have children elements. Those children may also have children, and so on.
 
 ![React Element Tree](react-element-tree.png)
 
-With the potential for an *n* depth tree of Elements, each of the Elements need to go through their own entire life cycle process. Just like the parent Element, React creates a new instance for each child. They go through construction, default props, initial state, `componentWillMount()` and `render()`. If the child has children, the process starts again... all the way down.
+With the potential for an *n* depth tree of Elements, each of the Elements need to go through their own entire life cycle process. Just like the parent Element, React creates a new instance for each child. They go through construction, default props, initial state, `componentWillMount()` and `render()`. If the child has children, the process starts again...all the way down.
 
 One of the most powerful concepts in React is the ability to easily compose complex layout through nesting of children. It is encouraged to keep your Components as *'dumb'* as possible. The idea is to only have container[^1] components managing higher level functionality.
 

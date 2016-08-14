@@ -1,5 +1,5 @@
 # Using `shouldComponentUpdate()`
- The next method in the Update life cycle, is `shouldComponentUpdate()`. This method allows your Component to exit the Update life cycle if there is no reason to apply a new render. Out of box, the `shouldComponentUpdate()` is a no-op that returns `true`. This means every time we start an Update in a Component, we will re-render.
+ The next method in the Update life cycle is `shouldComponentUpdate()`. This method allows your Component to exit the Update life cycle if there is no reason to apply a new render. Out of the box, the `shouldComponentUpdate()` is a no-op that returns `true`. This means every time we start an Update in a Component, we will re-render.
  
  If you recall, React does [not deeply compare `props`](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) by default. When `props` or `state` is updated React assumes we need to re-render the content. But, if the `props` or `state` have not changed, should we really be re-rendering?
  
@@ -70,9 +70,9 @@ this.setState({ data: [1, 2, 3] });
 
 The `shallowCompare` will see the current `props.data` as the same instance as the `nextProps.data` (`props.data === nextProps.data`) and therefore not render an update. Since we mutated the `data` Array, our code is **not** considered to be *pure*.
 
-This is where systems like [Redux](http://redux.js.org/) requires pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is always returned. This allows for `shallowCompare()` to see the change and update the component.
+This is why systems like [Redux](http://redux.js.org/) requires pure methods for reducers. If you need to change nested data you have to clone the objects and make sure a new instance is always returned. This allows for `shallowCompare()` to see the change and update the component.
 
-Other ways to handle this is to use an immutable data system, such as [Immutable.js](https://facebook.github.io/immutable-js/). These data structures prevent developers from accidentally mutating data. By enforcing immutable data structures, we can leverage `shouldComponentUpdate()` and have it verify of our `props` and `state` have changed[^2].
+Other ways to handle this is to use an immutable data system, such as [Immutable.js](https://facebook.github.io/immutable-js/). These data structures prevent developers from accidentally mutating data. By enforcing immutable data structures, we can leverage `shouldComponentUpdate()` and have it verify that our `props` and `state` have changed[^2].
 
 ### Stop renders at the source
  If you recall our nested Component structure:

@@ -1,5 +1,5 @@
 # Updating and `componentWillReceiveProps()`
- Now that we have discussed starting an Update, let's dive into the Update life cycle methods. The first method available to us `componentWillReceiveProps()`. This method is called when `props` are passed to the Component instance. Let's dig a little deeper into what this means.
+ Now that we have discussed starting an Update, let's dive into the Update life cycle methods. The first method available to us is `componentWillReceiveProps()`. This method is called when `props` are passed to the Component instance. Let's dig a little deeper into what this means.
  
  ## Passing `props`
  The most obvious example is when new `props` are passed to a Component. For example, we have a Form Component and a Person Component. The Form Component has a single `<input />` that allows the user to change the name by typing into the input. The input is bound to the `onChange` event and sets the state on the Form. The state value is then passed to the Person component as a `prop`.
@@ -46,7 +46,7 @@ export default class Form extends React.Component {
   
 > To understand why, we need to think about what could have happened. The data could have changed between the initial render and the two subsequent updates ... React has no way of knowing that the data didn’t change. Therefore, React needs to call `componentWillReceiveProps`, because the component needs to be notified of the new props (even if the new props happen to be the same as the old props).
 >  
->  -- See [(A =&gt; B) !=&gt (B =&gt A)](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) 
+>  -- See [(A =&gt; B) !=&gt; (B =&gt; A)](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) 
 
 The core issue with `props` and `componentWillReceiveProps()` is how JavaScript provides mutable data structures. Let's say we have a prop called `data` and data is an Array. 
 
@@ -59,7 +59,7 @@ this.setState({ data: [1, 2, 3] });
 
 If somewhere in our app, a process updates the data array via `push()`, this changes the content of the data Array. Yet, the Array itself is the same instance. Because it is the same instance, React can not easily determine if the internal data has changed. So, to prevent a lot of issues, or having to do deep comparisons, React will push the same props down.
 
-With this being said, `componentWillReceiveProps()` allows us to check and see if new props are coming in and we can make choices based on the data. We just need to make sure we never assume the props are different in this method. Be sure to read the great post [(A =&gt; B) !=&gt (B =&gt A)](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) by Jim Sproch.
+With this being said, `componentWillReceiveProps()` allows us to check and see if new props are coming in and we can make choices based on the data. We just need to make sure we never assume the props are different in this method. Be sure to read the great post [(A =&gt; B) !=&gt; (B =&gt; A)](https://facebook.github.io/react/blog/2016/01/08/A-implies-B-does-not-imply-B-implies-A.html) by Jim Sproch.
 
 ### Skipping this method
  Unlike the other methods in the Mounting phase, not all our Update phase methods are called every time. For example, we will skip `componentWillReceiveProps()` if the Update is triggered by just a state change. Going back to our Form.js example above:

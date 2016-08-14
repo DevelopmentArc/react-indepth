@@ -1,7 +1,7 @@
 # Post-Render with `componentDidUpdate()`
  Continuing the trend of corresponding methods, the `componentDidUpdate()` is the Update version of [`componentDidMount()`](../birth/post_mount_with_component_did_mount.md). Once again, we can access the Native UI stack, interact with our `refs` and if required start another re-render/update [^1].
  
- When `componentDidUpdate()` is called, two arguments are passed: `prevProps` and `prevState`. This is the inverse of `componentWillUpdate()`. The passed values are what the values were and accessing `this.props` and `this.state` are the current values.
+ When `componentDidUpdate()` is called, two arguments are passed: `prevProps` and `prevState`. This is the inverse of `componentWillUpdate()`. The passed values are what the values were, and `this.props` and `this.state` are the current values.
  
  ![](react-tree-update.png)
  
@@ -12,7 +12,7 @@
  
 ```javascript
 componentDidUpdate(prevProps, prevState) {
-  // only update chart of the data has changed
+  // only update chart if the data has changed
   if (prevProps.data !== this.props.data) {
     this.chart = c3.load({
       data: this.props.data
@@ -50,7 +50,7 @@ componentDidUpdate(prevProps, prevState) {
 }
 ```
 
-In general, this is not a common requirement and re-rendering has performance impacts for your Component and applications. Keep this in mind if you find yourself having to add second render passed in `componentDidUpdate()`.
+In general, this is not a common requirement and re-rendering has performance impacts for your Component and applications. Keep this in mind if you find yourself having to add a second render pass in `componentDidUpdate()`.
 
 ***Up Next:*** [Death/Unmounting In-depth](../death_unmounting_indepth.md)
 

@@ -2,14 +2,14 @@
  By moving our UI rendering of each Profile to a Component, we have separated layout and content display. The List is responsible for layout and data management. The Profile is responsible for UI rendering for each individual item. Because of this first step, we can move one step further and make our List even more flexible.
  
 ## List Feature expansion
- Continuing our customer example, let's image that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our users request the ability to manage a different kind of content. They now want to manage Posts. 
+ Continuing our customer example, let's imagine that our Profile List has started to evolve even more. We have added pagination support, selection management, sorting, filtering, etc. Now, our users request the ability to manage a different kind of content. They now want to manage Posts. 
  
  These Posts have some similar UI elements as our profile: images, descriptions, and details. But the layout and content vary drastically. We still need all the of the functionality of the List; pagination, filtering, etc. The question becomes, how do we handle this?
  
 ## Item Rendering
- A simple, but not ideal, approach would be to add a switch in our List's `map` method. The switch checks the data type and then choose to use the Profile Component or the Post Component. But, this approach adds a pretty bad [code smell](https://en.wikipedia.org/wiki/Code_smell). Similar to our first draft of the List, it meets our immediate needs but what happens when we need a Message List? Or Viewer List? Soon our List has a lot of switches.
+ A simple, but not ideal, approach would be to add a switch in our List's `map` method. The switch checks the data type and then chooses to use the Profile Component or the Post Component. But, this approach adds a pretty bad [code smell](https://en.wikipedia.org/wiki/Code_smell). Similar to our first draft of the List, it meets our immediate needs but what happens when we need a Message List? Or Viewer List? Soon our List has a lot of switches.
  
- A better way to solve this is through configuration. We can expose a prop on the List component that handles rendering of each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
+ A better way to solve this is through configuration. We can expose a prop on the List component that handles the rendering of each item. There are two ways to do this: by passing in a function or by passing in a Component Class.
  
 ### Function Item Renderer
  The first approach we will examine is passing in a function that handles rendering out each individual item in the List. The first step is to update our List component to require a `itemRenderer` prop that is a function and changing our profiles `prop` to items.
@@ -92,9 +92,9 @@ If we don't set a key when generating children dynamically (via our `itemRendere
 
 > Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `List`. See https://fb.me/react-warning-keys for more information.
 
-The quick solution is to pass in the index of the data, but this may not be the ideal solution. The problem with this approach is that it generates a key based on item order. It would be better to use an unique `id` that's defined on the data set. Another option is generating a hash code or some other unique identifier that reflects the data element's content.
+The quick solution is to pass in the index of the data, but this may not be the ideal solution. The problem with this approach is that it generates a key based on item order. It would be better to use a unique `id` that's defined on the data set. Another option is generating a hash code or some other unique identifier that reflects the data element's content.
 
-By having a identifier based on the data content instead of order, we can help optimize the Component rendering. When we display partial lists, such as filtering or sorting, if our key is based on the content and not order, React knows it doesn't have to generate a new Element for the data. It just needs to reorder the elements.
+By having an identifier based on the data content instead of order, we can help optimize the Component rendering. When we display partial lists, such as filtering or sorting, if our key is based on the content and not order, React knows it doesn't have to generate a new Element for the data. It just needs to reorder the elements.
 
 ### Component Item Renderer
  Another option for handling dynamic renderers, is to use a Component Class reference. This process is similar to passing in a function. Instead of offloading the rendering to the return value of a method we create a React Element from the Component and pass in the configuration.
@@ -151,7 +151,7 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.getElementById('mount-point'));
 ```
 
-Since we have a default item renderer (the Profile Component), the first version of the List just needs the profile data. The second version, we change out the renderer type by passing in our Component and pass in the item data.
+Since we have a default item renderer (the Profile Component), the first version of the List just needs the profile data. In the second version, we change out the renderer type by passing in our Component and passing in the item data.
 
 When our List renders the data it now creates a React Element from the `itemRenderer` value and passes in the current data element. At [DevelopmentArc](http://developmentarc.com), we have found using a React Class is a much cleaner approach to developing replaceable UI elements.
 

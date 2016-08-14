@@ -1,5 +1,5 @@
 # Higher Order Components
- The last Component composition pattern we will examine in this section is *Higher Order Components* (HOC). As [Dan Ambrov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components were first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775) in a gist. The core idea of HOC is to define a function, which you pass one or more Components to. This function generates and returns a new Component, which is a wrapper around the passed in Component(s).
+ The last Component composition pattern we will examine in this section is *Higher Order Components* (HOC). As [Dan Abramov discusses](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.b74nxbqew), Higher Order Components were first proposed by [Sebastian Markbåge](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775) in a gist. The core idea of HOC is to define a function, which you pass one or more Components to. This function generates and returns a new Component, which is a wrapper around the passed in Component(s).
  
  The need for HOC came about with React's move to support ES6 classes and the lack of mixin support with the new JavaScript Class syntax. To handle this change, a new pattern needed to be defined to replace mixins. Typically, mixins add/override functionality around the [Component Life Cycle](../life_cycle/introduction.md) and enable sharing reusable code in a elegant way. Without mixin support in ES6, the HOC pattern is required.
  
@@ -103,7 +103,7 @@ const FormGroup = React.createClass({
 return(<FormGroup { ...config } />);
 ```
 
-We take advantage of the [ES6 spred operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to pass in our `config` object as the props for the generated JSX Element. In our `render()` method we create the form group `<div>` and then render out our optional label and Component content.
+We take advantage of the [ES6 spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to pass in our `config` object as the props for the generated JSX Element. In our `render()` method we create the form group `<div>` and then render out our optional label and Component content.
 
 ```javascript
 render() {
@@ -160,7 +160,7 @@ __renderElement() {
 
 If the Component instance is an element, we [clone the element](https://facebook.github.io/react/docs/top-level-api.html#react.cloneelement) and pass on the new props. Otherwise, we generate a new Element using JSX and the passed in React Component.
 
-This HOC example is just the tip of the iceberg when it comes to self-generating wrapper components. Using this pattern, We can tap into the [Component Life Cycle methods](../life_cycle/introduction.md), we can make more complex decisions based on the data, we can register to stores or other events, and many other possible combinations.
+This HOC example is just the tip of the iceberg when it comes to self-generating wrapper components. Using this pattern, we can tap into the [Component Life Cycle methods](../life_cycle/introduction.md), we can make more complex decisions based on the data, we can register to stores or other events, and many other possible combinations.
 
 For more in-depth examples we highly recommend reading Dan Abramov's *[Mixins Are Dead. Long Live Composition](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.9y0gg1ix5)* and @franlplant's *[React Higher Order Components in depth](https://medium.com/@franleplant/react-higher-order-components-in-depth-cf9032ee6c3e#.d38rbnsu8)* 
 

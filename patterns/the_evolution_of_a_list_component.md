@@ -1,7 +1,7 @@
 # The Evolution of a List Component
- Lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly HTML drop-down displays a list of select-able options. It's so common, most of us take lists for granted.
+ Lists are everywhere in applications today. The list is crucial to Social Media UIs, such as Facebook, Twitter, Reddit, Instagram, etc. The current demo app trend of Todos are all about displaying a list of items. The lowly HTML drop-down displays a list of selectable options. It's so common, most of us take lists for granted.
  
- When we start building our application how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
+ When we start building our application, how should we approach creating reusable Components? Let's walk through a possible progression of a list feature.
  
 ## The first pass
  Typically, the first approach is to build a React component that renders the UI to the specific layout and data needs. For our example, we are building a list of customer profiles. The first design round requires the profile to have an avatar/picture and descriptive text.
@@ -47,9 +47,9 @@ We would then apply styling to the `<ul>`, `<li>` and `<div>` elements to meet o
  
  ![Optional Details](react-indepth-details-list.png)
  
- With this new design we now need to do our first bit of Component refactoring. To support the new optional detail fields we need to add logic to our Profile rendering. A good development practice is to keep our React Components as compartmentalized as possible. This enables multiple benefits.
+ With this new design we now need to do our first bit of Component refactoring. To support the new optional detail fields, we need to add logic to our Profile rendering. A good development practice is to keep our React Components as compartmentalized as possible. This enables multiple benefits.
  
- First, it helps reduce cognitive load. Having smaller, single focused Components means they are easier to read and understand the intention. A common experience we have all had as developers is returning to our own code six or more months later. Because we wrote it, we *should* understand it, but often it takes a bit of time to put ourselves back into mindset of what the code is solving. If the Component has hundreds of lines of logic, it will take that much more time to grok what the intention is. Even harder (and time consuming) is doing this with another developers work.
+ First, it helps reduce cognitive load. Having smaller, single focused Components means they are easier to read and understand the intention. A common experience we have all had as developers is returning to our own code six or more months later. Because we wrote it, we *should* understand it, but often it takes a bit of time to put ourselves back into mindset of what the code is solving. If the Component has hundreds of lines of logic, it will take that much more time to grok what the intention is. Even harder (and time consuming) is doing this with another developer's work.
  
  One of the beautiful features of React is that we can (and should) break our Components into small bite-sized chunks. Because it is so easy in React, this helps us make our code easier to understand. At the same time, this leads to the second benefit: faster reusability.
  
@@ -85,7 +85,7 @@ export default class Profile extends React.Component {
 }
 ```
 
- Here we have broken out the optional details rendering into a new Component called `Profile`. Profile's job is to render out the base layout and then render out our optional details, depending of if they are defined or not[^1]. We can then update our List code:
+ Here we have broken out the optional details rendering into a new Component called `Profile`. Profile's job is to render out the base layout and then render out our optional details, depending on if they are defined or not[^1]. We can then update our List code:
 
  **List.js**
 

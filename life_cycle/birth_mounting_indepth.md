@@ -47,7 +47,7 @@ So, how does this tie into the life cycle? These descriptor Elements are essenti
 ## The First `render()`
  To most React developers, the `render()` method is the most familiar. We write our JSX and layout here. It's where we spend a lot of time and drives the layout of the application. When we talk about the first `render()` this is a special version of the `render()` method that mounts our entire application on the Native UI.
 
- In the browser, this is the `ReactDOM.render()` method. Here we pass in the root Element and tell React where to mount our content. With this call, React begins processing the passed Element(s) and generating instances of our React components. The Element is used to generate the type instance and then the `props` are passed to the Component instance.
+ In the browser, this is the `ReactDOM.render()` method. Here we pass in the root Element and tell React where to mount our content. With this call, React begins processing the passed Element(s) and generate instances of our React components. The Element is used to generate the type instance and then the `props` are passed to the Component instance.
 
  This is the point where we enter the Component life cycle. React uses the `instance` property on the Element and begins construction.
 

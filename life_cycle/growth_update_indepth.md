@@ -6,7 +6,7 @@
  In this Section, we will dive into the different methods. We'll examine the order of the methods called and how they affect the overall process. We will also discuss what tasks are best handled during each method and discuss application optimization.
  
  ## Starting Update: Changing Props
-  As mentioned earlier, we have three ways to start the Growth/Update phase. The first way is when the components `props` update. This occurs when either the root Element (ex: `ReactDOM.render(<MyComponent data={ dataVaule } />, ...)` has the `props` value changed or the parent of the Component's `prop` changes.
+  As mentioned earlier, we have three ways to start the Growth/Update phase. The first way is when the component's `props` update. This occurs when either the root Element (ex: `ReactDOM.render(<MyComponent data={ dataVaule } />, ...)` has the `props` value changed or the parent of the Component's `prop` changes.
   
   From a Component's instance perspective (such as `<Person name="Bill" />`) the passed in props are immutable. In other words, the Person instance cannot update the value name internally. In fact, if you try you will get an Error in React.
   
@@ -50,7 +50,7 @@ Because props are immutable by the Component itself, the parent must provide the
  
  [^1] With Component state, we consider this internal functionality. In theory, we can access and even edit state outside of the instance but this is an anti-pattern. Accessing a Component's state from outside injects a lot of fragility into the system (pathing dependency, changing of internal values, etc.). Only a Component instance should `setState()` on itself. 
  
- [^2] Even though moving `props` to `state` [is considered an anti-pattern](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html) there are a few use cases. The most common is having a `defaultValue` prop that becomes the internal `value` in state. We see this pattern with most Form elements in React. Although, there is a strong movement to get away from this and work with only [Controlled Components](https://facebook.github.io/react/docs/forms.html#controlled-components).
+ [^2] Even though moving `props` to `state` [is considered an anti-pattern](https://facebook.github.io/react/tips/props-in-getInitialState-as-anti-pattern.html) there are a few use cases. The most common is having a `defaultValue` prop that becomes the internal `value` in state. We see this pattern with most Form elements in React; although there is a strong movement to get away from this and work with only [Controlled Components](https://facebook.github.io/react/docs/forms.html#controlled-components).
  
  [^3] The React code comments recommend that *"... You should treat `this.state` as immutable. There is no guarantee that `this.state` will be immediately updated, so accessing `this.state` after calling [the setState] method may return the old value."*
  

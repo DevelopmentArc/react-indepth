@@ -15,9 +15,10 @@ To review, the methods and order called are:
 ## Growth / Update
 1. `componentWillReceiveProps()`
 2. `shouldComponentUpdate()`
+3. `componentWillUpdate()`
 3. `render()`
 4. Children Life cycle methods
-5. `componentWillUpdate()`
+5. `componentDidUpdate()`
 
 ## Death / Un-Mounting
 1. `componentWillUnmount()`
